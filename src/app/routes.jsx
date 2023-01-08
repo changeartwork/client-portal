@@ -1,0 +1,24 @@
+import AuthGuard from 'app/auth/AuthGuard';
+import dashboardRoutes from 'app/views/dashboard/DashboardRoutes';
+import NotFound from 'app/views/sessions/NotFound';
+import sessionRoutes from 'app/views/sessions/SessionRoutes';
+import { Navigate } from 'react-router-dom';
+import MatxLayout from './components/MatxLayout/MatxLayout';
+import jobsRoutes from './views/jobs/jobsRoutes';
+import quotesRoutes from './views/quotes/quotesRoutes';
+
+const routes = [
+  {
+    element: (
+      <AuthGuard>
+        <MatxLayout />
+      </AuthGuard>
+    ),
+    children: [...dashboardRoutes, ...quotesRoutes, ...jobsRoutes]
+  },
+  ...sessionRoutes,
+  { path: '/', element: <Navigate to="/cp/dashboard/default" /> },
+  { path: '*', element: <NotFound /> },
+];
+
+export default routes;
