@@ -28,7 +28,7 @@ const ForgotPasswordRoot = styled(JustifyBox)(() => ({
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('admin@example.com');
+  const [email, setEmail] = useState('');
 
   const handleFormSubmit = () => {
     console.log(email);
@@ -57,7 +57,7 @@ const ForgotPassword = () => {
                 />
 
                 <Button fullWidth variant="contained" color="primary" type="submit">
-                  Reset Password
+                  Request Account
                 </Button>
 
                 <Button

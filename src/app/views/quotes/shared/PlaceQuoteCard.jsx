@@ -26,7 +26,7 @@ const Paragraph = styled('p')(({ theme }) => ({
 
 
 
-const UpgradeCard = () => {
+const PlaceQuoteCard = () => {
   const navigate = useNavigate();
   const redirectToCreateQuote = () => {
     navigate('/cp/quote/create')
@@ -37,8 +37,7 @@ const UpgradeCard = () => {
         <img src="../assets/images/illustrations/upgrade.png" alt="New Quotation" />
 
         <Paragraph>
-          It is not advisable to create a quote <b>for client</b> <br /> If possible ask the client to create quote from their client portal or using our web portal.
-          If client is unable to place through any portals, kindly create with justification.
+          Once the quotation is placed, our<b> client service team</b> <br /> will check and acknowledge it and provide the estimation within 30mins. If there are any additional details required, you will get a request mail / notification from the team.
         </Paragraph>
 
         <Button
@@ -55,4 +54,4 @@ const UpgradeCard = () => {
   );
 };
 
-export default UpgradeCard;
+export default PlaceQuoteCard;

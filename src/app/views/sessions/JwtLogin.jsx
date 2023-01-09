@@ -136,10 +136,10 @@ const JwtLogin = () => {
                       </FlexBox>
 
                       <NavLink
-                        to="/cp/session/forgot-password"
+                        to="/cp/session/request-account"
                         style={{ color: theme.palette.primary.main }}
                       >
-                        Forgot password?
+                        Need Account?
                       </NavLink>
                     </FlexBox>
 
@@ -159,7 +159,7 @@ const JwtLogin = () => {
                         </FormHelperText>
                       </Box>
                     )}
-                    <Paragraph>
+                    {/* <Paragraph>
                       Don't have an account?
                       <NavLink
                         to="/cp/session/signup"
@@ -167,7 +167,7 @@ const JwtLogin = () => {
                       >
                         Register
                       </NavLink>
-                    </Paragraph>
+                    </Paragraph> */}
                   </form>
                 )}
               </Formik>

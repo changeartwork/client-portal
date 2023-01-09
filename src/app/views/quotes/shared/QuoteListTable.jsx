@@ -1,5 +1,4 @@
 import {
-  Avatar,
   Box,
   Card,
   Icon,
@@ -59,7 +58,7 @@ const Small = styled('small')(({ bgcolor }) => ({
   boxShadow: '0 0 2px 0 rgba(0, 0, 0, 0.12), 0 2px 2px 0 rgba(0, 0, 0, 0.24)',
 }));
 
-const TopSellingTable = () => {
+const QuoteListTable = () => {
   const { palette } = useTheme();
   const bgError = palette.error.main;
   const bgPrimary = palette.primary.main;
@@ -81,32 +80,26 @@ const TopSellingTable = () => {
     setRowsPerPage(+event.target.value);
     setPage(0);
   };
-  // const [previewSrc, setPreviewSrc] = useState(''); // state for storing previewImage
-  // const [isPreviewAvailable, setIsPreviewAvailable] = useState(false); // state to show preview only for images
+
   const param = {
     email: user.email
   };
   const header = {
     Authorization: localStorage.getItem('accessToken')
   }
-  
-  // const res = await axios.get('https://httpbin.org/get', { params });
 
   useEffect(() => {
     const getFilesList = async () => {
       try {
         const { data } = await axios.get(`${process.env.REACT_APP_QS_URL}/list`,
         {params: param, headers: header});
-        console.log('from API', data)
         setFilesList(data);
-        console.log('from hook', filesList)
       } catch (error) {
-        console.log('inside catch', error)
         error.response && setErrorMsg(error.response.data);
       }
     };
     getFilesList();
-  }, []);
+  }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
   return (
     <Card elevation={3} sx={{ pt: '20px', mb: 3 }}>
@@ -154,13 +147,11 @@ const TopSellingTable = () => {
                     </TableCell>
                     <TableCell colSpan={2} align="left" sx={{ px: 0, textTransform: 'capitalize' }}>
                       <Box display="flex" alignItems="center">
-                        {/* <Avatar src={product.imgUrl} /> */}
                         <Paragraph sx={{ m: 0, ml: 2 }}>{product.service_type}</Paragraph>
                       </Box>
                     </TableCell>
 
                     <TableCell align="left" colSpan={2} sx={{ px: 0 }}>
-                      {/* ${product.price > 999 ? (product.price / 1000).toFixed(1) + 'k' : product.price} */}
                       {product.memo}
                     </TableCell>
 
@@ -178,17 +169,11 @@ const TopSellingTable = () => {
 
                     <TableCell sx={{ px: 0 }} colSpan={1}>
                       <IconButton>
-                        <Icon color="primary">download</Icon>
+                        <Icon color="primary">upload</Icon>
                       </IconButton>
                       <IconButton>
                         <Icon color="primary">mail</Icon>
                       </IconButton>
-                      {/* <IconButton>
-                    <Icon color="primary">delete</Icon>
-                  </IconButton> */}
-                      {/* <IconButton>
-                    <Icon color="primary">archive</Icon>
-                  </IconButton> */}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -208,31 +193,4 @@ const TopSellingTable = () => {
   );
 };
 
-const productList = [
-  {
-    start_date: '12.01.2023',
-    name: 'Peter John',
-    email: 'peter.john@gmail.com',
-    status: 'NEW',
-  },
-  {
-    start_date: '12.02.2023',
-    name: 'Kings Morgan',
-    email: 'morgan.kings@gmail.com',
-    status: 'INPROGRESS',
-  },
-  {
-    start_date: '22.01.2023',
-    name: 'Jenifer Annie',
-    email: 'annie.jenifer@gmail.com',
-    status: 'ONHOLD',
-  },
-  {
-    start_date: '16.11.2022',
-    name: 'Mohammed Yusuf',
-    email: 'md.yusuf@gmail.com',
-    status: 'NEW',
-  }
-];
-
-export default TopSellingTable;
+export default QuoteListTable;
