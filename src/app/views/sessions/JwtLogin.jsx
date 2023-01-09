@@ -64,7 +64,7 @@ const JwtLogin = () => {
       await login(values.email, values.password);
       setStatus({ success: true });
       setSubmitting(false);
-      navigate('/');
+      navigate('/cp');
     } catch (e) {
       setLoading(false);
       setStatus({ success: false });
@@ -79,7 +79,7 @@ const JwtLogin = () => {
         <Grid container>
           <Grid item sm={6} xs={12}>
             <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-              <img src="/assets/images/illustrations/dreamer.svg" width="100%" alt="" />
+              <img src="../assets/images/illustrations/dreamer.svg" width="100%" alt="" />
             </JustifyBox>
           </Grid>
 

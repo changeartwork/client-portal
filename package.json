@@ -1,6 +1,7 @@
 {
   "name": "client-portal",
   "version": "1.0.0",
+  "homepage": "/cp",
   "private": true,
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.19.2",
@@ -40,7 +41,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "GENERATE_SOURCEMAP=false react-scripts build",
+    "build": "react-scripts build",
+    "winBuild": "set \"GENERATE_SOURCEMAP=false\" && react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "ghp": "react-scripts build && gh-pages -d build"
