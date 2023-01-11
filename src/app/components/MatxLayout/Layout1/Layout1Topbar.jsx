@@ -130,14 +130,14 @@ const Layout1Topbar = () => {
             }
           >
             <StyledItem>
-              <Link to="/">
+              <Link to="/cp/dashboard/default">
                 <Icon> home </Icon>
                 <Span> Home </Span>
               </Link>
             </StyledItem>
 
             <StyledItem>
-              <Link to="/page-layouts/user-profile">
+              <Link to="/cp/dashboard/default">
                 <Icon> person </Icon>
                 <Span> Profile </Span>
               </Link>

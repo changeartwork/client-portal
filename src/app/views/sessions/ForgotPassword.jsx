@@ -17,7 +17,7 @@ const ContentBox = styled(Box)(({ theme }) => ({
 }));
 
 const ForgotPasswordRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+  background: '#4F4F4F',
   minHeight: '100vh !important',
   '& .card': {
     maxWidth: 800,
@@ -25,6 +25,16 @@ const ForgotPasswordRoot = styled(JustifyBox)(() => ({
     borderRadius: 12,
   },
 }));
+
+const Div = styled('div')(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(2),
+  color: 'rgba(253, 159, 10)',
+  margin: '0 150px',
+  alignItems: 'center'
+}));
+
 
 const ForgotPassword = () => {
   const navigate = useNavigate();
@@ -39,8 +49,9 @@ const ForgotPassword = () => {
       <Card className="card">
         <Grid container>
           <Grid item xs={12}>
+          <Div>{"CHANGE! - Client Portal"}</Div>
             <JustifyBox p={4}>
-              <img width="300" src="../assets/images/illustrations/dreamer.svg" alt="" />
+              <img width="250" src="../assets/images/illustrations/dreamer.svg" alt="" />
             </JustifyBox>
 
             <ContentBox>
@@ -63,7 +74,7 @@ const ForgotPassword = () => {
                 <Button
                   fullWidth
                   color="primary"
-                  variant="outlined"
+                  variant="contained"
                   onClick={() => navigate(-1)}
                   sx={{ mt: 2 }}
                 >

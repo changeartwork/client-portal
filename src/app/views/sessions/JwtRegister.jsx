@@ -20,7 +20,7 @@ const ContentBox = styled(JustifyBox)(() => ({
 }));
 
 const JWTRegister = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+  background: '#4F4F4F',
   minHeight: '100vh !important',
   '& .card': {
     maxWidth: 800,
@@ -48,6 +48,15 @@ const validationSchema = Yup.object().shape({
   email: Yup.string().email('Invalid Email address').required('Email is required!'),
 });
 
+const Div = styled('div')(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(2),
+  color: 'rgba(253, 159, 10)',
+  margin: '0 50px'
+}));
+
+
 const JwtRegister = () => {
   const theme = useTheme();
   const { register } = useAuth();
@@ -72,6 +81,7 @@ const JwtRegister = () => {
       <Card className="card">
         <Grid container>
           <Grid item sm={6} xs={12}>
+          <Div>{"CHANGE! - Client Portal"}</Div>
             <ContentBox>
               <img
                 width="100%"

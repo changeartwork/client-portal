@@ -14,13 +14,13 @@ const JustifyBox = styled(FlexBox)(() => ({ justifyContent: 'center' }));
 
 const ContentBox = styled(Box)(() => ({
   height: '100%',
-  padding: '32px',
-  position: 'relative',
+  padding: '50px',
+  position: 'flex',
   background: 'rgba(0, 0, 0, 0.01)',
 }));
 
 const JWTRoot = styled(JustifyBox)(() => ({
-  background: '#1A2038',
+  background: '#4F4F4F',
   minHeight: '100% !important',
   '& .card': {
     maxWidth: 800,
@@ -46,6 +46,14 @@ const validationSchema = Yup.object().shape({
     .required('Password is required!'),
   email: Yup.string().email('Invalid Email address').required('Email is required!'),
 });
+
+const Div = styled('div')(({ theme }) => ({
+  ...theme.typography.button,
+  backgroundColor: theme.palette.background.paper,
+  padding: theme.spacing(4),
+  color: 'rgba(253, 159, 10)'
+}));
+
 
 const JwtLogin = () => {
   const theme = useTheme();
@@ -85,6 +93,8 @@ const JwtLogin = () => {
 
           <Grid item sm={6} xs={12}>
             <ContentBox>
+              
+      <Div>{"CHANGE! - Client Portal"}</Div>
               <Formik
                 onSubmit={handleFormSubmit}
                 initialValues={initialValues}
