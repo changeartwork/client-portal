@@ -69,7 +69,7 @@ const JwtLogin = () => {
   }) => {
     setLoading(true);
     try {
-      await login(values.email, values.password);
+      await login(values.email, values.password, "client");
       setStatus({ success: true });
       setSubmitting(false);
       navigate('/cp');
@@ -165,7 +165,7 @@ const JwtLogin = () => {
                     {errors.submit && (
                       <Box mt={2}>
                         <FormHelperText error>
-                          {errors.submit}
+                          Error : {errors.submit}
                         </FormHelperText>
                       </Box>
                     )}
