@@ -96,6 +96,7 @@ export const AuthProvider = ({ children }) => {
         dispatch({
             type: 'LOGIN',
             payload: {
+                isAuthenticated: true,
                 user,
             },
         })
@@ -146,7 +147,7 @@ export const AuthProvider = ({ children }) => {
                     dispatch({
                         type: 'INIT',
                         payload: {
-                            isAuthenticated: false,
+                            isAuthenticated: true,
                             user: null,
                         },
                     })
@@ -156,7 +157,7 @@ export const AuthProvider = ({ children }) => {
                 dispatch({
                     type: 'INIT',
                     payload: {
-                        isAuthenticated: false,
+                        isAuthenticated: true,
                         user: null,
                     },
                 })

@@ -2,10 +2,12 @@ import Loadable from 'app/components/Loadable';
 import { lazy } from 'react';
 import { authRoles } from '../../auth/authRoles';
 
-const Todo = Loadable(lazy(() => import('./Todo')));
+const ListJobs = Loadable(lazy(() => import('./ListJobs')));
+const CreateJob = Loadable(lazy(() => import('./CreateJob')));
 
-const jobsRoutes = [
-  { path: '/cp/jobs/todo', element: <Todo />, auth: authRoles.client }
+const quotesRoutes = [
+  { path: '/cp/job/list', element: <ListJobs />, auth: authRoles.client },
+  { path: '/cp/job/create', element: <CreateJob />, auth: authRoles.client },
 ];
 
-export default jobsRoutes;
+export default quotesRoutes;

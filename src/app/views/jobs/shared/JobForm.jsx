@@ -25,7 +25,7 @@ const TextField = styled(TextValidator)(() => ({
   marginBottom: "16px",
 }));
 
-const QuoteForm = () => {
+const JobForm = () => {
 
   const [state, setState] = useState({});
   const [files, setFiles] = useState([]);
@@ -48,7 +48,7 @@ const QuoteForm = () => {
     console.log(bodyFormData)
     axios({
       method: "post",
-      url: `${process.env.REACT_APP_QS_URL}/create`,
+      url: `${process.env.REACT_APP_JS_URL}/create`,
       data: bodyFormData,
       headers: { "Content-Type": "multipart/form-data" },
     })
@@ -83,7 +83,7 @@ const QuoteForm = () => {
   } = state;
 
   return (
-    <SimpleCard title="Place a Quote">
+    <SimpleCard title="Place a Job">
       <ValidatorForm onSubmit={handleSubmit} onError={() => null}>
         <Grid container spacing={6}>
           <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
@@ -141,7 +141,7 @@ const QuoteForm = () => {
 
             <Button color="primary" variant="contained" type="submit">
               <Icon>send</Icon>
-              <Span sx={{ pl: 1, textTransform: "capitalize" }}>Place Quote</Span>
+              <Span sx={{ pl: 1, textTransform: "capitalize" }}>Place Job</Span>
             </Button>
 
           </Grid>
@@ -155,7 +155,7 @@ const QuoteForm = () => {
       <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
         {success && <Alert onClose={() => { setSuccess(false) }} severity="success">
           <AlertTitle>Success</AlertTitle>
-          Quote placed successfully <strong>check it out!</strong>
+          Job placed successfully <strong>check it out!</strong>
         </Alert>}
         {failure && <Alert onClose={() => { setFailure(false) }} severity="error">
           <AlertTitle>{err.message}</AlertTitle>
@@ -166,4 +166,4 @@ const QuoteForm = () => {
   );
 };
 
-export default QuoteForm;
+export default JobForm;

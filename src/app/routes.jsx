@@ -5,6 +5,7 @@ import sessionRoutes from 'app/views/sessions/SessionRoutes';
 import { Navigate } from 'react-router-dom';
 import MatxLayout from './components/MatxLayout/MatxLayout';
 import jobsRoutes from './views/jobs/jobsRoutes';
+import settingsRoutes from './views/settings/settingsRoutes';
 import quotesRoutes from './views/quotes/quotesRoutes';
 
 const routes = [
@@ -14,7 +15,7 @@ const routes = [
         <MatxLayout />
       </AuthGuard>
     ),
-    children: [...dashboardRoutes, ...quotesRoutes, ...jobsRoutes]
+    children: [...dashboardRoutes, ...quotesRoutes, ...jobsRoutes, ...settingsRoutes]
   },
   ...sessionRoutes,
   { path: '/cp', element: <Navigate to="/cp/dashboard/default" /> },
