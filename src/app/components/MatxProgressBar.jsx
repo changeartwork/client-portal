@@ -13,7 +13,7 @@ const MatxProgressBar = ({
   text = '',
   spacing = 2,
   coloredText = false,
-}) => {
+}) => { 
   const theme = useTheme();
   const secondary = theme.palette.text.secondary;
 

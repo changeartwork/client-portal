@@ -14,7 +14,7 @@ const defaultOption = {
         show: true,
         trigger: 'axis',
 
-        axisPointer: {
+        axisPointer: { 
             type: 'cross',
             lineStyle: {
                 opacity: 0,
