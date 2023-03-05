@@ -1,6 +1,5 @@
 import { Grid, styled } from '@mui/material';
 import { Fragment } from 'react';
-import QuoteListTable from './shared/QuoteListTable';
 import PlaceQuoteCard from './shared/PlaceQuoteCard';
 import QuoteListCard from './shared/QuoteListCard';
 

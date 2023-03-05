@@ -350,7 +350,7 @@ const QuoteFormWithDetails = () => {
                     <TextField
                       type="text"
                       name="mobile"
-                      label="Mobile Nubmer"
+                      label="Mobile Nubmer *"
                       onChange={handleChangeState}
                       validators={["required"]}
                       errorMessages={["this field is required"]}
@@ -361,8 +361,10 @@ const QuoteFormWithDetails = () => {
                     <TextField
                       type="text"
                       name="business_name"
-                      label="Business Name"
+                      label="Business Name *"
                       onChange={handleChangeState}
+                      validators={["required"]}
+                      errorMessages={["this field is required"]}
                     />
                   </Grid>
                   <Grid item xs={2} sm={4} md={4} >
@@ -370,8 +372,10 @@ const QuoteFormWithDetails = () => {
                     <TextField
                       type="text"
                       name="design_name"
-                      label="Design Name"
+                      label="Design Name *"
                       onChange={handleChangeState}
+                      validators={["required"]}
+                      errorMessages={["this field is required"]}
                     />
                   </Grid>
                   <Grid item xs={2} sm={2} md={2} >
@@ -380,14 +384,17 @@ const QuoteFormWithDetails = () => {
                       labelId="priority"
                       id="priority"
                       value={priority}
-                      label="Priority"
+                      label="Priority *"
                       onChange={event => {
                         event.preventDefault();
                         handleChangePriority(event);
                       }}
+                      validators={["required"]}
+                      errorMessages={["this field is required"]}
                     >
                       <MenuItem value={'normal'}>Normal</MenuItem>
                       <MenuItem value={'rush'}>Rush</MenuItem>
+                      <MenuItem value={'super_rush'}>Super Rush</MenuItem>
                     </Select>
                   </Grid>
                   {
@@ -398,11 +405,13 @@ const QuoteFormWithDetails = () => {
                         labelId="process_type"
                         id="process_type"
                         value={processType}
-                        label="Process Type"
+                        label="Process Type *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangeProcessType(event);
                         }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       >
                         <MenuItem value={'screen_printing'}>Screen Printing</MenuItem>
                         <MenuItem value={'offset_printing'}>Offset Printing</MenuItem>
@@ -418,11 +427,13 @@ const QuoteFormWithDetails = () => {
                         labelId="colors"
                         id="colors"
                         value={colors}
-                        label="No. of colors"
+                        label="No. of colors *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangeNoOfColors(event);
                         }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       >
                         {Array.from(Array(11)).map((_, index) => (
                           <MenuItem value={index}>{index}</MenuItem>))}
@@ -454,8 +465,10 @@ const QuoteFormWithDetails = () => {
                       <TextField
                         type="text"
                         name="width"
-                        label="Width"
+                        label="Width *"
                         onChange={handleChangeState}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       />
                     </Grid>
                   }
@@ -464,8 +477,10 @@ const QuoteFormWithDetails = () => {
                       <TextField
                         type="text"
                         name="heigth"
-                        label="Heigth"
+                        label="Heigth *"
                         onChange={handleChangeState}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       />
                     </Grid>
                   }
@@ -494,8 +509,10 @@ const QuoteFormWithDetails = () => {
                       <TextField
                         type="text"
                         name="shape"
-                        label="Logo Shape"
+                        label="Logo Shape *"
                         onChange={handleChangeState}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       />
                     </Grid>
                   }
@@ -514,8 +531,10 @@ const QuoteFormWithDetails = () => {
                       <TextField
                         type="text"
                         name="flips"
-                        label="No. of Flips"
+                        label="No. of Flips *"
                         onChange={handleChangeState}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       />
                     </Grid>
                   }
@@ -528,11 +547,13 @@ const QuoteFormWithDetails = () => {
                         labelId="file_formats"
                         id="file_formats"
                         value={fileFormat}
-                        label="Final file formats"
+                        label="Final file formats *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangeFinalFileFormat(event);
                         }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       >
                         <MenuItem value={'PDF,EPS'}>PDF, EPS</MenuItem>
                         <MenuItem value={'PDF,AI'}>PDF, AI</MenuItem>
@@ -554,11 +575,13 @@ const QuoteFormWithDetails = () => {
                         labelId="file_formats"
                         id="file_formats"
                         value={fileFormat}
-                        label="Final file formats"
+                        label="Final file formats *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangeFinalFileFormat(event);
                         }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       >
                         <MenuItem value={'PDF,DST'}>PDF, DST</MenuItem>
                         <MenuItem value={'PDF,DST,EMB'}>PDF, DST, EMB</MenuItem>
@@ -577,11 +600,13 @@ const QuoteFormWithDetails = () => {
                         labelId="layout"
                         id="layout"
                         value={layout}
-                        label="Layout"
+                        label="Layout *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangeLayout(event);
                         }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       >
                         <MenuItem value={'vertical'}>Vertical</MenuItem>
                         <MenuItem value={'horizontal'}>Horizontal</MenuItem>
@@ -616,11 +641,13 @@ const QuoteFormWithDetails = () => {
                         labelId="colormode"
                         id="colormode"
                         value={colormode}
-                        label="Color Mode"
+                        label="Color Mode *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangeColorMode(event);
                         }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
                       >
                         <MenuItem value={'RGB'}>RGB</MenuItem>
                         <MenuItem value={'CMYK'}>CMYK</MenuItem>
@@ -632,11 +659,14 @@ const QuoteFormWithDetails = () => {
                     serviceType === 'DIGITIZING' &&
                     <Grid item xs={2} sm={2} md={2} >
                       <InputLabel id="placement">Placement</InputLabel>
-                      <Select defaultValue={placement} id="placement" label="Placement"
+                      <Select defaultValue={placement} id="placement" label="Placement *"
                         onChange={event => {
                           event.preventDefault();
                           handleChangePlacement(event);
-                        }}>
+                        }}
+                        validators={["required"]}
+                        errorMessages={["this field is required"]}
+                        >
                         <MenuItem value="">
                           <em>None</em>
                         </MenuItem>

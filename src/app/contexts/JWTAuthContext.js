@@ -83,16 +83,22 @@ const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
-    const login = async (email, password, role) => {
-        const response = await axios.post(`${process.env.REACT_APP_AS_URL}/login`, {
+    const login = async (client_id, email, password, role) => {
+        const response = await axios.post(`${process.env.REACT_APP_AS_URL}/login-client`, {
+            client_id,
             email,
             password,
             role
         })
-        const { accessToken, user } = response.data
-
+        const { accessToken, client } = response.data
+        var user = {
+            id: client.profile._id,
+            email: client.profile.email,
+            name: client.profile.first_name+" "+client.profile.last_name,
+            avatar: client.profile.avatar,
+            role: "client"
+        }
         setSession(accessToken)
-
         dispatch({
             type: 'LOGIN',
             payload: {
@@ -133,9 +139,14 @@ export const AuthProvider = ({ children }) => {
 
                 if (accessToken && isValidToken(accessToken)) {
                     setSession(accessToken)
-                    const response = await axios.get('/api/auth/profile')
-                    const { user } = response.data
-
+                    const response = await (await axios.get(`${process.env.REACT_APP_AS_URL}/profile`, {headers:{'Authorization': accessToken}}))
+                    var user = {
+                        id: response.data._id,
+                        email: response.data.email,
+                        name: response.data.first_name+" "+response.data.last_name,
+                        avatar: response.data.avatar,
+                        role: "client"
+                    }
                     dispatch({
                         type: 'INIT',
                         payload: {

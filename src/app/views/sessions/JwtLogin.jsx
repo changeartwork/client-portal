@@ -34,6 +34,7 @@ const JWTRoot = styled(JustifyBox)(() => ({
 
 // inital login credentials
 const initialValues = {
+  client_id: '',
   email: '',
   password: '',
   remember: true,
@@ -69,7 +70,7 @@ const JwtLogin = () => {
   }) => {
     setLoading(true);
     try {
-      await login(values.email, values.password, "client");
+      await login(values.client_id, values.email, values.password, "client");
       setStatus({ success: true });
       setSubmitting(false);
       navigate('/cp');
@@ -102,6 +103,21 @@ const JwtLogin = () => {
               >
                 {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
                   <form onSubmit={handleSubmit}>
+                    <TextField
+                      fullWidth
+                      size="small"
+                      type="text"
+                      name="client_id"
+                      label="Client ID"
+                      variant="outlined"
+                      onBlur={handleBlur}
+                      value={values.client_id}
+                      onChange={handleChange}
+                      helperText={touched.client_id && errors.client_id}
+                      error={Boolean(errors.client_id && touched.client_id)}
+                      sx={{ mb: 3 }}
+                    />
+
                     <TextField
                       fullWidth
                       size="small"
