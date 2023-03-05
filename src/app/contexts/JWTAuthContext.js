@@ -84,7 +84,7 @@ export const AuthProvider = ({ children }) => {
     const [state, dispatch] = useReducer(reducer, initialState)
 
     const login = async (client_id, email, password, role) => {
-        const response = await axios.post(`${process.env.REACT_APP_AS_URL}/login-client`, {
+        const response = await axios.post(`${process.env.REACT_APP_US_URL}/login-client`, {
             client_id,
             email,
             password,
@@ -139,7 +139,7 @@ export const AuthProvider = ({ children }) => {
 
                 if (accessToken && isValidToken(accessToken)) {
                     setSession(accessToken)
-                    const response = await (await axios.get(`${process.env.REACT_APP_AS_URL}/profile`, {headers:{'Authorization': accessToken}}))
+                    const response = await (await axios.get(`${process.env.REACT_APP_US_URL}/profile`, {headers:{'Authorization': accessToken}}))
                     var user = {
                         id: response.data._id,
                         email: response.data.email,
