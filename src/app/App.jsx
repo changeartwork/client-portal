@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import { useRoutes } from "react-router-dom";
 import "../fake-db";
 import { MatxTheme } from "./components";
-import store from "./redux/store";
+import store from "./redux/Store";
 import routes from "./routes";
 
 const App = () => {
