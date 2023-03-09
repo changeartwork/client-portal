@@ -1,42 +1,47 @@
-import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from '@mui/material';
-import { Small } from 'app/components/Typography';
+import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from "@mui/material";
+import { Small } from "app/components/Typography";
+import React from "react";
 
 const StyledCard = styled(Card)(({ theme }) => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  justifyContent: 'space-between',
-  padding: '24px !important',
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  padding: "24px !important",
+  justifyContent: "space-between",
   background: theme.palette.background.paper,
-  [theme.breakpoints.down('sm')]: { padding: '16px !important' },
+  [theme.breakpoints.down("sm")]: { padding: "16px !important" },
 }));
 
-const ContentBox = styled(Box)(({ theme }) => ({
-  display: 'flex',
-  flexWrap: 'wrap',
-  alignItems: 'center',
-  '& small': { color: theme.palette.text.secondary },
-  '& .icon': { opacity: 0.6, fontSize: '44px', color: theme.palette.primary.main },
+const ContentBox = styled("div")(({ theme }) => ({
+  display: "flex",
+  flexWrap: "wrap",
+  alignItems: "center",
+  "& small": { color: theme.palette.text.secondary },
+  "& .icon": {
+    opacity: 0.6,
+    fontSize: "44px",
+    color: theme.palette.primary.main,
+  },
 }));
 
-const Heading = styled('h6')(({ theme }) => ({
+const Heading = styled("h6")(({ theme }) => ({
   margin: 0,
-  marginTop: '4px',
-  fontSize: '14px',
-  fontWeight: '500',
+  marginTop: "4px",
+  fontSize: "14px",
+  fontWeight: "500",
   color: theme.palette.primary.main,
 }));
 
-const StatCards = () => {
-  const cardList = [
-    { name: 'Pending Quotation', amount: 2, icon: 'group' },
-    { name: 'Billing', amount: '$450', icon: 'attach_money' },
-    { name: 'Support Status', amount: '60% Completed', icon: 'streetview' },
-    { name: 'Orders', amount: '4 in progress', icon: 'speaker_notes' },
-  ];
+const cardList = [
+  { name: "New Leads", amount: 3050, icon: "group" },
+  { name: "This week Sales", amount: "$80,500", icon: "attach_money" },
+  { name: "Inventory Status", amount: "8.5% Stock Surplus", icon: "store" },
+  { name: "Orders to deliver", amount: "305 Orders", icon: "shopping_cart" },
+];
 
+const StatCards = () => {
   return (
-    <Grid container spacing={3} sx={{ mb: '24px' }}>
+    <Grid container spacing={3} sx={{ mb: "24px" }}>
       {cardList.map((item, index) => (
         <Grid item xs={12} md={6} key={index}>
           <StyledCard elevation={6}>

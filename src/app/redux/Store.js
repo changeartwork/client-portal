@@ -1,22 +1,25 @@
-import { applyMiddleware, compose, createStore } from 'redux';
-import thunk from 'redux-thunk';
-import RootReducer from './reducers/RootReducer';
+import { configureStore } from "@reduxjs/toolkit";
+import { brandReducer } from "./slices/brandSlice";
+import { cartReducer } from "./slices/cartSlice";
+import { categoryReducer } from "./slices/categorySlice";
+import { notificationReducer } from "./slices/notificationSlice";
+import { productReducer } from "./slices/productSlice";
+import { ratingReducer } from "./slices/ratingSlice";
+import { scrumReducer } from "./slices/scrumSlice";
+import { userReducer } from "./slices/userSlice";
 
-const initialState = {};
-const middlewares = [thunk];
-let devtools = (x) => x;
+const store = configureStore({
+  reducer: {
+    cart: cartReducer,
+    users: userReducer,
+    brands: brandReducer,
+    ratings: ratingReducer,
+    scrumboard: scrumReducer,
+    products: productReducer,
+    categories: categoryReducer,
+    notifications: notificationReducer,
+  },
+  devTools: process.env.NODE_ENV !== "production",
+});
 
-if (
-  process &&
-  process.env.NODE_ENV !== 'production' &&
-  process.browser &&
-  window.__REDUX_DEVTOOLS_EXTENSION__
-) {
-  devtools = window.__REDUX_DEVTOOLS_EXTENSION__();
-}
-
-export const Store = createStore(
-  RootReducer,
-  initialState,
-  compose(applyMiddleware(...middlewares), devtools)
-);
+export default store;

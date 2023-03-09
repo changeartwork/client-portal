@@ -1,23 +1,27 @@
-import '../fake-db';
-import { Provider } from 'react-redux';
-import { useRoutes } from 'react-router-dom';
-import { MatxTheme } from './components';
-import { AuthProvider } from './contexts/JWTAuthContext';
-import { SettingsProvider } from './contexts/SettingsContext';
-import { Store } from './redux/Store';
-import routes from './routes';
+import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
+import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AuthProvider } from "app/contexts/FirebaseAuthContext";
+import { SettingsProvider } from "app/contexts/SettingsContext";
+import { Provider } from "react-redux";
+import { useRoutes } from "react-router-dom";
+import "../fake-db";
+import { MatxTheme } from "./components";
+import store from "./redux/store";
+import routes from "./routes";
 
 const App = () => {
   const content = useRoutes(routes);
 
   return (
-    <Provider store={Store}>
-      <SettingsProvider>
-        <MatxTheme>
-          <AuthProvider>{content}</AuthProvider>
-        </MatxTheme>
-      </SettingsProvider>
-    </Provider>
+    <LocalizationProvider dateAdapter={AdapterDateFns}>
+      <Provider store={store}>
+        <SettingsProvider>
+          <MatxTheme>
+            <AuthProvider>{content}</AuthProvider>
+          </MatxTheme>
+        </SettingsProvider>
+      </Provider>
+    </LocalizationProvider>
   );
 };
 

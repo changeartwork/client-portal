@@ -1,44 +1,26 @@
-import { Box, Button, Card, Grid, styled, TextField } from '@mui/material';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-
-const FlexBox = styled(Box)(() => ({
-  display: 'flex',
-  alignItems: 'center',
-}));
-
-const JustifyBox = styled(FlexBox)(() => ({
-  justifyContent: 'center',
-}));
+import { Box, Button, Card, Grid, styled, TextField } from "@mui/material";
+import { FlexAlignCenter } from "app/components/FlexBox";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const ContentBox = styled(Box)(({ theme }) => ({
   padding: 32,
   background: theme.palette.background.default,
 }));
 
-const ForgotPasswordRoot = styled(JustifyBox)(() => ({
-  background: '#4F4F4F',
-  minHeight: '100vh !important',
-  '& .card': {
+const ForgotPasswordRoot = styled(FlexAlignCenter)(() => ({
+  background: "#1A2038",
+  minHeight: "100vh !important",
+  "& .card": {
     maxWidth: 800,
-    margin: '1rem',
+    margin: "1rem",
     borderRadius: 12,
   },
 }));
 
-const Div = styled('div')(({ theme }) => ({
-  ...theme.typography.button,
-  backgroundColor: theme.palette.background.paper,
-  padding: theme.spacing(2),
-  color: 'rgba(253, 159, 10)',
-  margin: '0 150px',
-  alignItems: 'center'
-}));
-
-
 const ForgotPassword = () => {
   const navigate = useNavigate();
-  const [email, setEmail] = useState('');
+  const [email, setEmail] = useState("admin@example.com");
 
   const handleFormSubmit = () => {
     console.log(email);
@@ -49,10 +31,9 @@ const ForgotPassword = () => {
       <Card className="card">
         <Grid container>
           <Grid item xs={12}>
-          <Div>{"CHANGE! - Client Portal"}</Div>
-            <JustifyBox p={4}>
-              <img width="250" src="../assets/images/illustrations/dreamer.svg" alt="" />
-            </JustifyBox>
+            <FlexAlignCenter p={4}>
+              <img width="300" src="/assets/images/illustrations/dreamer.svg" alt="" />
+            </FlexAlignCenter>
 
             <ContentBox>
               <form onSubmit={handleFormSubmit}>
@@ -64,17 +45,17 @@ const ForgotPassword = () => {
                   value={email}
                   variant="outlined"
                   onChange={(e) => setEmail(e.target.value)}
-                  sx={{ mb: 3, width: '100%' }}
+                  sx={{ mb: 3, width: "100%" }}
                 />
 
                 <Button fullWidth variant="contained" color="primary" type="submit">
-                  Request Account
+                  Reset Password
                 </Button>
 
                 <Button
                   fullWidth
                   color="primary"
-                  variant="contained"
+                  variant="outlined"
                   onClick={() => navigate(-1)}
                   sx={{ mt: 2 }}
                 >

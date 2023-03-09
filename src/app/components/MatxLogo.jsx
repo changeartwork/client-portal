@@ -1,4 +1,5 @@
-import useSettings from 'app/hooks/useSettings';
+import useSettings from "app/hooks/useSettings";
+import React from "react";
 
 const MatxLogo = ({ className }) => {
   const { settings } = useSettings();

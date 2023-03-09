@@ -1,51 +1,45 @@
-import { Hidden, Switch } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
-import { themeShadows } from 'app/components/MatxTheme/themeColors';
-import useSettings from 'app/hooks/useSettings';
-import { sidenavCompactWidth, sideNavWidth } from 'app/utils/constant';
-import { convertHexToRGB } from 'app/utils/utils';
-import React from 'react';
-import Brand from '../../Brand';
-import Sidenav from '../../Sidenav';
+import { Box, styled, Switch, useTheme } from "@mui/material";
+import { themeShadows } from "app/components/MatxTheme/themeColors";
+import useSettings from "app/hooks/useSettings";
+import { sidenavCompactWidth, sideNavWidth } from "app/utils/constant";
+import { convertHexToRGB } from "app/utils/utils";
+import React from "react";
+import Brand from "../../Brand";
+import Sidenav from "../../Sidenav";
 
-const SidebarNavRoot = styled(Box)(({ theme, width, primaryBg, bgImgURL }) => ({
-  position: 'fixed',
+// styled components
+const SidebarNavRoot = styled(Box)(({ theme, width, bg, img }) => ({
   top: 0,
   left: 0,
-  height: '100vh',
-  width: width,
-  boxShadow: themeShadows[8],
-  backgroundRepeat: 'no-repeat',
-  backgroundPosition: 'top',
-  backgroundSize: 'cover',
   zIndex: 111,
-  overflow: 'hidden',
+  width: width,
+  height: "100vh",
+  position: "fixed",
+  overflow: "hidden",
+  backgroundSize: "cover",
+  backgroundPosition: "top",
+  boxShadow: themeShadows[8],
+  backgroundRepeat: "no-repeat",
   color: theme.palette.text.primary,
-  transition: 'all 250ms ease-in-out',
-  backgroundImage: `linear-gradient(to bottom, rgba(${primaryBg}, 0.96), rgba(${primaryBg}, 0.96)), url(${bgImgURL})`,
-  '&:hover': {
+  transition: "all 250ms ease-in-out",
+  backgroundImage: `linear-gradient(to bottom, rgba(${bg}, 0.96), rgba(${bg}, 0.96)), url(${img})`,
+  "&:hover": {
     width: sideNavWidth,
-    '& .sidenavHoverShow': {
-      display: 'block',
-    },
-    '& .compactNavItem': {
-      width: '100%',
-      maxWidth: '100%',
-      '& .nav-bullet': {
-        display: 'block',
-      },
-      '& .nav-bullet-text': {
-        display: 'none',
-      },
+    "& .sidenavHoverShow": { display: "block" },
+    "& .compactNavItem": {
+      width: "100%",
+      maxWidth: "100%",
+      "& .nav-bullet": { display: "block" },
+      "& .nav-bullet-text": { display: "none" },
     },
   },
 }));
 
-const NavListBox = styled(Box)(() => ({
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
-}));
+const NavListBox = styled(Box)({
+  height: "100%",
+  display: "flex",
+  flexDirection: "column",
+});
 
 const Layout1Sidenav = () => {
   const theme = useTheme();
@@ -55,8 +49,9 @@ const Layout1Sidenav = () => {
 
   const getSidenavWidth = () => {
     switch (mode) {
-      case 'compact':
+      case "compact":
         return sidenavCompactWidth;
+
       default:
         return sideNavWidth;
     }
@@ -64,32 +59,26 @@ const Layout1Sidenav = () => {
   const primaryRGB = convertHexToRGB(theme.palette.primary.main);
 
   const updateSidebarMode = (sidebarSettings) => {
-    updateSettings({
-      layout1Settings: {
-        leftSidebar: {
-          ...sidebarSettings,
-        },
-      },
-    });
+    updateSettings({ layout1Settings: { leftSidebar: { ...sidebarSettings } } });
   };
 
   const handleSidenavToggle = () => {
-    updateSidebarMode({ mode: mode === 'compact' ? 'full' : 'compact' });
+    updateSidebarMode({ mode: mode === "compact" ? "full" : "compact" });
   };
 
   return (
-    <SidebarNavRoot bgImgURL={bgImgURL} primaryBg={primaryRGB} width={getSidenavWidth()}>
+    <SidebarNavRoot img={bgImgURL} bg={primaryRGB} width={getSidenavWidth()}>
       <NavListBox>
         <Brand>
-          <Hidden smDown>
-            <Switch
-              onChange={handleSidenavToggle}
-              checked={leftSidebar.mode !== 'full'}
-              color="secondary"
-              size="small"
-            />
-          </Hidden>
+          <Switch
+            size="small"
+            color="secondary"
+            onChange={handleSidenavToggle}
+            checked={leftSidebar.mode !== "full"}
+            sx={{ display: { md: "block", xs: "none" } }}
+          />
         </Brand>
+
         <Sidenav />
       </NavListBox>
     </SidebarNavRoot>

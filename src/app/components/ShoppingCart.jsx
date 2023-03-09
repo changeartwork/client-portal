@@ -1,139 +1,112 @@
-import { Badge, Button, Drawer, Icon, IconButton, ThemeProvider } from '@mui/material';
-import { Box, styled, useTheme } from '@mui/system';
-import useAuth from 'app/hooks/useAuth';
-import useSettings from 'app/hooks/useSettings';
-import {
-  deleteProductFromCart,
-  getCartList,
-  updateCartAmount,
-} from 'app/redux/actions/EcommerceActions';
-import { sideNavWidth, topBarHeight } from 'app/utils/constant';
-import { Fragment, useEffect, useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-import { themeShadows } from './MatxTheme/themeColors';
-import { H6, Small } from './Typography';
+import { Clear, KeyboardArrowDown, KeyboardArrowUp } from "@mui/icons-material";
+import { Badge, Box, Button, Drawer, Icon, IconButton, styled, ThemeProvider } from "@mui/material";
+import useSettings from "app/hooks/useSettings";
+import { addToCart, removeFromCart, removeQtyFromCart } from "app/redux/slices/cartSlice";
+import { sideNavWidth, topBarHeight } from "app/utils/constant";
+import { Fragment, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { themeShadows } from "./MatxTheme/themeColors";
+import { H6, Small } from "./Typography";
 
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  '& span': {
-    color: theme.palette.text.primary,
-  },
-  '& #disable': {
-    color: theme.palette.text.disabled,
-  },
+  "& span": { color: theme.palette.text.primary },
+  "& #disable": { color: theme.palette.text.disabled },
 }));
 
-const MiniCart = styled('div')(({ theme }) => ({
-  height: '100%',
-  display: 'flex',
-  flexDirection: 'column',
+const MiniCart = styled(Box)({
+  height: "100%",
+  display: "flex",
   width: sideNavWidth,
-}));
+  flexDirection: "column",
+});
 
-const CartBox = styled('div')(() => ({
-  padding: '4px',
-  paddingLeft: '16px',
-  display: 'flex',
-  alignItems: 'center',
-  boxShadow: themeShadows[6],
+const CartBox = styled(Box)({
+  padding: "4px",
+  display: "flex",
+  paddingLeft: "16px",
+  alignItems: "center",
   height: topBarHeight,
-  '& h5': {
+  boxShadow: themeShadows[6],
+  "& h5": {
     marginTop: 0,
     marginBottom: 0,
-    marginLeft: '16px',
-    fontWeight: '500',
+    fontWeight: "500",
+    marginLeft: "16px",
   },
-}));
+});
 
-const ProductBox = styled('div')(() => ({
-  display: 'flex',
-  alignItems: 'center',
-  padding: '8px 8px',
-  transition: 'background 300ms ease',
-  '&:hover': {
-    background: 'rgba(0,0,0,0.01)',
-  },
-}));
+const ProductBox = styled(Box)({
+  gap: 5,
+  display: "flex",
+  padding: "8px 8px",
+  alignItems: "center",
+  transition: "background 300ms ease",
+  "&:hover": { background: "rgba(0,0,0,0.01)" },
+});
 
-const IMG = styled('img')(() => ({
-  width: 48,
-}));
-
-const ProductDetails = styled('div')(() => ({
-  marginRight: '8',
-  textAlign: 'center',
+const ProductDetails = styled(Box)({
   flexGrow: 1,
-  display: 'flex',
-  flexDirection: 'column',
-  '& h6': {
-    whiteSpace: 'nowrap',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    display: 'block',
+  display: "flex",
+  flexDirection: "column",
+  "& h6": {
     width: 120,
-    marginBottom: '4px',
+    display: "block",
+    overflow: "hidden",
+    whiteSpace: "nowrap",
+    textOverflow: "ellipsis",
   },
-}));
-
-let cartListLoaded = false;
+});
 
 function ShoppingCart({ container }) {
-  const [totalCost, setTotalCost] = useState(0);
-  const [panelOpen, setPanelOpen] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const { user } = useAuth();
-  const { cartList } = useSelector((state) => state.ecommerce);
   const { settings } = useSettings();
-  const theme = useTheme();
-  const secondary = theme.palette.text.secondary;
 
-  if (!cartListLoaded) {
-    dispatch(getCartList(user.id));
-    cartListLoaded = true;
-  }
+  const [panelOpen, setPanelOpen] = useState(false);
+  const cart = useSelector((state) => state.cart);
 
-  const handleDrawerToggle = () => {
-    setPanelOpen(!panelOpen);
-  };
+  const handleDrawerToggle = () => setPanelOpen(!panelOpen);
 
   const handleCheckoutClick = () => {
-    if (totalCost > 0) {
-      navigate('/ecommerce/checkout');
-      setPanelOpen(false);
-    }
+    setPanelOpen(false);
+    navigate("/ecommerce/checkout");
   };
 
-  useEffect(() => {
-    let total = 0;
+  // total cartlist items amount
+  const totalAmount = cart.reduce((prev, curr) => prev + curr.price * curr.qty, 0);
 
-    cartList.forEach((product) => {
-      total += product.price * product.amount;
-    });
-    setTotalCost(total);
-  }, [cartList]);
+  // remove product from cart handler
+  const handleRemoveItem = (productId) => () => {
+    dispatch(removeFromCart(productId));
+  };
 
-  const { palette } = useTheme();
-  const textColor = palette.text.primary;
+  // remove quantity from a product
+  const handleQuantityDecrement = (productId) => () => {
+    dispatch(removeQtyFromCart(productId));
+  };
+
+  // add quantity from a product
+  const handleQuantityIncrement = (product) => () => {
+    dispatch(addToCart(product));
+  };
 
   return (
     <Fragment>
       <IconButton onClick={handleDrawerToggle}>
-        <Badge color="secondary" badgeContent={cartList.length}>
-          <Icon sx={{ color: textColor }}>shopping_cart</Icon>
+        <Badge color="secondary" badgeContent={cart.length}>
+          <Icon sx={{ color: "text.primary" }}>shopping_cart</Icon>
         </Badge>
       </IconButton>
 
       <ThemeProvider theme={settings.themes[settings.activeTheme]}>
         <Drawer
-          container={container}
-          variant="temporary"
-          anchor={'right'}
+          anchor={"right"}
           open={panelOpen}
+          variant="temporary"
+          container={container}
           onClose={handleDrawerToggle}
-          ModalProps={{
-            keepMounted: true,
-          }}
+          ModalProps={{ keepMounted: true }}
         >
           <MiniCart>
             <CartBox>
@@ -142,53 +115,47 @@ function ShoppingCart({ container }) {
             </CartBox>
 
             <Box flexGrow={1} overflow="auto">
-              {cartList.map((product) => (
+              {cart.map((product) => (
                 <ProductBox key={product.id}>
-                  <Box mr="4px" display="flex" flexDirection="column">
+                  <Box display="flex" flexDirection="column">
+                    <StyledIconButton size="small" onClick={handleQuantityIncrement(product)}>
+                      <KeyboardArrowUp sx={{ fontSize: 18 }} />
+                    </StyledIconButton>
+
                     <StyledIconButton
                       size="small"
-                      onClick={() =>
-                        dispatch(updateCartAmount(user.id, product.id, product.amount + 1))
-                      }
+                      disabled={product.amount < 2}
+                      onClick={handleQuantityDecrement(product.id)}
                     >
-                      <Icon sx={{ cursor: 'pinter' }}>keyboard_arrow_up</Icon>
-                    </StyledIconButton>
-                    <StyledIconButton
-                      disabled={!(product.amount - 1)}
-                      size="small"
-                      onClick={() =>
-                        dispatch(updateCartAmount(user.id, product.id, product.amount - 1))
-                      }
-                    >
-                      <Icon id={!(product.amount - 1) && 'disable'}>keyboard_arrow_down</Icon>
+                      <KeyboardArrowDown sx={{ fontSize: 18 }} />
                     </StyledIconButton>
                   </Box>
-                  <Box mr={1}>
-                    <IMG src={product.imgUrl} alt={product.title} />
-                  </Box>
+
+                  <img src={product.imgUrl} alt={product.title} width="50" />
+
                   <ProductDetails>
                     <H6>{product.title}</H6>
-                    <Small sx={{ color: secondary }}>
-                      ${product.price} x {product.amount}
+
+                    <Small color="text.secondary">
+                      ${product.price} x {product.qty}
                     </Small>
                   </ProductDetails>
-                  <StyledIconButton
-                    size="small"
-                    onClick={() => dispatch(deleteProductFromCart(user.userId, product.id))}
-                  >
-                    <Icon fontSize="small">clear</Icon>
+
+                  <StyledIconButton size="small" onClick={handleRemoveItem(product.id)}>
+                    <Clear sx={{ fontSize: 16 }} />
                   </StyledIconButton>
                 </ProductBox>
               ))}
             </Box>
 
             <Button
-              sx={{ width: '100%', borderRadius: 0 }}
-              variant="contained"
               color="primary"
+              variant="contained"
               onClick={handleCheckoutClick}
+              disabled={cart.length === 0}
+              sx={{ width: "100%", borderRadius: 0 }}
             >
-              Checkout (${totalCost.toFixed(2)})
+              Checkout (${totalAmount.toFixed(2)})
             </Button>
           </MiniCart>
         </Drawer>

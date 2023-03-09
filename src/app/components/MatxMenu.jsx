@@ -1,56 +1,35 @@
-import { Menu, ThemeProvider } from '@mui/material';
-import { Box, styled } from '@mui/system';
-import useSettings from 'app/hooks/useSettings';
-import React, { Fragment } from 'react';
+import { Box, Menu, styled } from "@mui/material";
+import { Fragment, useState } from "react";
 
 const MenuButton = styled(Box)(({ theme }) => ({
-  display: 'inline-block',
+  display: "inline-block",
   color: theme.palette.text.primary,
-  '& div:hover': {
-    backgroundColor: theme.palette.action.hover,
-  },
+  "& div:hover": { backgroundColor: theme.palette.action.hover },
 }));
 
-const MatxMenu = (props) => {
-  const [anchorEl, setAnchorEl] = React.useState(null);
-  const children = React.Children.toArray(props.children);
-  let { shouldCloseOnItemClick = true, horizontalPosition = 'left' } = props;
-  const { settings } = useSettings();
-
-  const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
+const MatxMenu = ({ horizontalPosition = "left", children, menuButton }) => {
+  const [anchorEl, setAnchorEl] = useState(null);
+  const handleClose = () => setAnchorEl(null);
+  const handleClick = (event) => setAnchorEl(event.currentTarget);
 
   return (
     <Fragment>
-      <MenuButton onClick={handleClick}>{props.menuButton}</MenuButton>
-      <ThemeProvider theme={settings.themes[settings.activeTheme]}>
-        <Menu
-          elevation={8}
-          getContentAnchorEl={null}
-          anchorEl={anchorEl}
-          open={!!anchorEl}
-          onClose={handleClose}
-          anchorOrigin={{
-            vertical: 'bottom',
-            horizontal: horizontalPosition,
-          }}
-          transformOrigin={{
-            vertical: 'top',
-            horizontal: horizontalPosition,
-          }}
-        >
-          {children.map((child, index) => (
-            <div onClick={shouldCloseOnItemClick ? handleClose : () => {}} key={index}>
-              {child}
-            </div>
-          ))}
-        </Menu>
-      </ThemeProvider>
+      <MenuButton onClick={handleClick}>{menuButton}</MenuButton>
+
+      <Menu
+        elevation={8}
+        open={!!anchorEl}
+        anchorEl={anchorEl}
+        onClose={handleClose}
+        anchorOrigin={{ vertical: "bottom", horizontal: horizontalPosition }}
+        transformOrigin={{ vertical: "top", horizontal: horizontalPosition }}
+      >
+        {children.map((child, index) => (
+          <Box onClick={handleClose} key={index}>
+            {child}
+          </Box>
+        ))}
+      </Menu>
     </Fragment>
   );
 };

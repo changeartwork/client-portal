@@ -1,6 +1,16 @@
-import { useContext } from 'react'
-import NotificationContext from 'app/contexts/NotificationContext'
+import { getNotification } from "app/redux/slices/notificationSlice";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const useNotification = () => useContext(NotificationContext)
+const useNotification = () => {
+  const dispatch = useDispatch();
+  const { notifications } = useSelector((state) => state.notifications);
 
-export default useNotification
+  useEffect(() => {
+    dispatch(getNotification());
+  }, [dispatch]);
+
+  return { notifications };
+};
+
+export default useNotification;
