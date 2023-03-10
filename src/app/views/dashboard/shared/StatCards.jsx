@@ -1,66 +1,82 @@
-import { Box, Card, Grid, Icon, IconButton, styled, Tooltip } from "@mui/material";
-import { Small } from "app/components/Typography";
-import React from "react";
+import { Box, Card, Grid, Typography, } from '@mui/material';
 
-const StyledCard = styled(Card)(({ theme }) => ({
-  display: "flex",
-  flexWrap: "wrap",
-  alignItems: "center",
-  padding: "24px !important",
-  justifyContent: "space-between",
-  background: theme.palette.background.paper,
-  [theme.breakpoints.down("sm")]: { padding: "16px !important" },
-}));
 
-const ContentBox = styled("div")(({ theme }) => ({
-  display: "flex",
-  flexWrap: "wrap",
-  alignItems: "center",
-  "& small": { color: theme.palette.text.secondary },
-  "& .icon": {
-    opacity: 0.6,
-    fontSize: "44px",
-    color: theme.palette.primary.main,
-  },
-}));
 
-const Heading = styled("h6")(({ theme }) => ({
-  margin: 0,
-  marginTop: "4px",
-  fontSize: "14px",
-  fontWeight: "500",
-  color: theme.palette.primary.main,
-}));
-
-const cardList = [
-  { name: "New Leads", amount: 3050, icon: "group" },
-  { name: "This week Sales", amount: "$80,500", icon: "attach_money" },
-  { name: "Inventory Status", amount: "8.5% Stock Surplus", icon: "store" },
-  { name: "Orders to deliver", amount: "305 Orders", icon: "shopping_cart" },
-];
 
 const StatCards = () => {
-  return (
-    <Grid container spacing={3} sx={{ mb: "24px" }}>
-      {cardList.map((item, index) => (
-        <Grid item xs={12} md={6} key={index}>
-          <StyledCard elevation={6}>
-            <ContentBox>
-              <Icon className="icon">{item.icon}</Icon>
-              <Box ml="12px">
-                <Small>{item.name}</Small>
-                <Heading>{item.amount}</Heading>
-              </Box>
-            </ContentBox>
 
-            <Tooltip title="View Details" placement="top">
-              <IconButton>
-                <Icon>arrow_right_alt</Icon>
-              </IconButton>
-            </Tooltip>
-          </StyledCard>
+  
+  
+
+  return (
+    <Grid container spacing={3} sx={{ mb: '24px' }}>
+     
+        <Grid item xs={12} md={2} >
+         
+        <Card sx={{ background:'#F9AD19' }}>
+              <Box sx={{ my: '24px' }}>
+              <Typography level="h1"  fontWeight="500" color="#ffffff"  sx={{ mb: 2, fontSize:'18px' }} align="center">Request A Quote </Typography>
+              </Box>
+             </Card> 
+
+             
+       
         </Grid>
-      ))}
+
+
+        <Grid item xs={12} md={2} >
+         
+         <Card sx={{ background:'#4F4F4F' }}>
+               <Box sx={{ my: '24px' }}>
+               <Typography level="h1" fontSize="xl" fontWeight="500" color="#ffffff"  sx={{ mb: 2, fontSize:'18px' }} align="center">Place An order</Typography>
+               </Box>
+              </Card> 
+ 
+          </Grid>
+
+          <Grid item xs={12} md={2} >
+         
+         <Card sx={{ background:'#F9AD19' }}>
+               <Box sx={{ my: '24px' }}>
+               <Typography level="h1" fontSize="xl" fontWeight="500" color="#ffffff"  sx={{ mb: 2, fontSize:'18px' }} align="center">Existing Orders </Typography>
+               </Box>
+              </Card> 
+ 
+              
+        
+         </Grid>
+
+         <Grid item xs={12} md={2} >
+         
+         <Card sx={{ background:'#4F4F4F' }}>
+               <Box sx={{ my: '24px' }}>
+               <Typography level="h1" fontSize="xl" fontWeight="500" color="#ffffff"  sx={{ mb: 2, fontSize:'18px' }} align="center">Existing Quotes</Typography>
+               </Box>
+              </Card> 
+ 
+          </Grid>
+
+          <Grid item xs={12} md={2} >
+         
+         <Card sx={{ background:'#F9AD19' }}>
+               <Box sx={{ my: '24px' }}>
+               <Typography level="h1" fontSize="xl" fontWeight="500" color="#ffffff"  sx={{ mb: 2, fontSize:'18px' }} align="center">Pay with credit Card</Typography>
+               </Box>
+              </Card> 
+ 
+          </Grid>
+
+          <Grid item xs={12} md={2} >
+         
+         <Card sx={{ background:'#4F4F4F' }}>
+               <Box sx={{ my: '24px' }}>
+               <Typography level="h1" fontSize="xl" fontWeight="500" color="#ffffff"  sx={{ mb: 2, fontSize:'18px' }} align="center">Pay with  Paypal</Typography>
+               </Box>
+              </Card> 
+ 
+          </Grid>
+
+
     </Grid>
   );
 };

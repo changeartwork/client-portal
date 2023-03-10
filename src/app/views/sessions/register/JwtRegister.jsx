@@ -1,180 +1,345 @@
-import { useTheme } from "@emotion/react";
-import { LoadingButton } from "@mui/lab";
-import { Box, Card, Checkbox, Grid, styled, TextField } from "@mui/material";
-import { Paragraph } from "app/components/Typography";
-import useAuth from "app/hooks/useAuth";
-import { Formik } from "formik";
-import { useState } from "react";
-import { NavLink, useNavigate } from "react-router-dom";
-import * as Yup from "yup";
+import { Box, } from '@mui/system';
 
-const FlexBox = styled(Box)(() => ({ display: "flex", alignItems: "center" }));
+import {
+Button,
+Grid,
+Icon,
+styled,
+MenuItem,
+Card,
+Typography,
+} from "@mui/material";
+import { Span } from "app/components/Typography";
+import { useEffect, useState } from "react";
+import { TextValidator, ValidatorForm } from "react-material-ui-form-validator";
+import { NavLink, } from 'react-router-dom';
 
-const JustifyBox = styled(FlexBox)(() => ({ justifyContent: "center" }));
 
-const ContentBox = styled(JustifyBox)(() => ({
-  height: "100%",
-  padding: "32px",
-  background: "rgba(0, 0, 0, 0.01)",
+
+
+
+const countries = [
+{
+value: 'NY',
+label: 'Newyork',
+},
+{
+value: 'EUR',
+label: '€',
+},
+{
+value: 'BTC',
+label: '฿',
+},
+{
+value: 'JPY',
+label: '¥',
+},
+];
+
+const States = [
+{
+value: 'NY',
+label: 'Newyork',
+},
+{
+value: 'EUR',
+label: '€',
+},
+{
+value: 'BTC',
+label: '฿',
+},
+{
+value: 'JPY',
+label: '¥',
+},
+];
+
+const Cities = [
+{
+value: 'NY',
+label: 'Newyork',
+},
+{
+value: 'EUR',
+label: '€',
+},
+{
+value: 'BTC',
+label: '฿',
+},
+{
+value: 'JPY',
+label: '¥',
+},
+];
+
+
+const paymentTerms = [
+{
+value: 'NY',
+label: '7 Days',
+},
+{
+value: 'EUR',
+label: '15 Days',
+},
+{
+value: 'BTC',
+label: '30 Days',
+},
+
+];
+
+
+const paymentmode = [
+{
+value: 'NY',
+label: 'Credit Card',
+},
+{
+value: 'EUR',
+label: 'Credit Card on file',
+},
+{
+value: 'BTC',
+label: 'Paypal in Advance',
+},
+
+{
+value: 'BTC',
+label: 'Check',
+},
+{
+value: 'BTC',
+label: ' A/C Transfer',
+},
+
+];
+
+const currency = [
+{
+value: 'NY',
+label: 'US Dollar',
+},
+{
+value: 'EUR',
+label: 'Canadian Dollar',
+},
+{
+value: 'BTC',
+label: 'British Pound',
+},
+
+
+
+];
+
+
+
+
+
+const JWTRoot = styled(Card)(() => ({
+background: '#4F4F4F',
+minHeight: '100% !important',
+display: 'flex',
+alignItems: 'center',
+justifyContent: 'center',
+
 }));
 
-const JWTRegister = styled(JustifyBox)(() => ({
-  background: "#1A2038",
-  minHeight: "100vh !important",
-  "& .card": {
-    maxWidth: 800,
-    minHeight: 400,
-    margin: "1rem",
-    display: "flex",
-    borderRadius: 12,
-    alignItems: "center",
-  },
+const Div = styled('div')(({ }) => ({
+width: "80%",
+
 }));
 
-// inital login credentials
-const initialValues = {
-  email: "",
-  password: "",
-  username: "",
-  remember: true,
-};
-
-// form field validation schema
-const validationSchema = Yup.object().shape({
-  password: Yup.string()
-    .min(6, "Password must be 6 character length")
-    .required("Password is required!"),
-  email: Yup.string().email("Invalid Email address").required("Email is required!"),
-});
+const TextField = styled(TextValidator)(() => ({
+width: "100%",
+marginBottom: "16px",
+}));
 
 const JwtRegister = () => {
-  const theme = useTheme();
-  const { register } = useAuth();
-  const navigate = useNavigate();
-  const [loading, setLoading] = useState(false);
+const [state, setState] = useState({ date: new Date() });
 
-  const handleFormSubmit = (values) => {
-    setLoading(true);
+useEffect(() => {
+ValidatorForm.addValidationRule("isPasswordMatch", (value) => {
+if (value !== state.password) return false;
 
-    try {
-      register(values.email, values.username, values.password);
-      navigate("/");
-      setLoading(false);
-    } catch (e) {
-      console.log(e);
-      setLoading(false);
-    }
-  };
+return true;
+});
+return () => ValidatorForm.removeValidationRule("isPasswordMatch");
+}, [state.password]);
 
-  return (
-    <JWTRegister>
-      <Card className="card">
-        <Grid container>
-          <Grid item sm={6} xs={12}>
-            <ContentBox>
-              <img
-                width="100%"
-                alt="Register"
-                src="/assets/images/illustrations/posting_photo.svg"
-              />
-            </ContentBox>
-          </Grid>
+const handleSubmit = (event) => {
+// console.log("submitted");
+// console.log(event);
+};
 
-          <Grid item sm={6} xs={12}>
-            <Box p={4} height="100%">
-              <Formik
-                onSubmit={handleFormSubmit}
-                initialValues={initialValues}
-                validationSchema={validationSchema}
-              >
-                {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
-                  <form onSubmit={handleSubmit}>
-                    <TextField
-                      fullWidth
-                      size="small"
-                      type="text"
-                      name="username"
-                      label="Username"
-                      variant="outlined"
-                      onBlur={handleBlur}
-                      value={values.username}
-                      onChange={handleChange}
-                      helperText={touched.username && errors.username}
-                      error={Boolean(errors.username && touched.username)}
-                      sx={{ mb: 3 }}
-                    />
+const handleChange = (event) => {
+event.persist();
+setState({ ...state, [event.target.name]: event.target.value });
+};
 
-                    <TextField
-                      fullWidth
-                      size="small"
-                      type="email"
-                      name="email"
-                      label="Email"
-                      variant="outlined"
-                      onBlur={handleBlur}
-                      value={values.email}
-                      onChange={handleChange}
-                      helperText={touched.email && errors.email}
-                      error={Boolean(errors.email && touched.email)}
-                      sx={{ mb: 3 }}
-                    />
-                    <TextField
-                      fullWidth
-                      size="small"
-                      name="password"
-                      type="password"
-                      label="Password"
-                      variant="outlined"
-                      onBlur={handleBlur}
-                      value={values.password}
-                      onChange={handleChange}
-                      helperText={touched.password && errors.password}
-                      error={Boolean(errors.password && touched.password)}
-                      sx={{ mb: 2 }}
-                    />
 
-                    <FlexBox gap={1} alignItems="center">
-                      <Checkbox
-                        size="small"
-                        name="remember"
-                        onChange={handleChange}
-                        checked={values.remember}
-                        sx={{ padding: 0 }}
-                      />
 
-                      <Paragraph fontSize={13}>
-                        I have read and agree to the terms of service.
-                      </Paragraph>
-                    </FlexBox>
+const {
+clientid,
+firstname,
+lastname,
+mobile,
+password,
 
-                    <LoadingButton
-                      type="submit"
-                      color="primary"
-                      loading={loading}
-                      variant="contained"
-                      sx={{ mb: 2, mt: 3 }}
-                    >
-                      Regiser
-                    </LoadingButton>
+email1,
 
-                    <Paragraph>
-                      Already have an account?
-                      <NavLink
-                        to="/session/signin"
-                        style={{ color: theme.palette.primary.main, marginLeft: 5 }}
-                      >
-                        Login
-                      </NavLink>
-                    </Paragraph>
-                  </form>
-                )}
-              </Formik>
-            </Box>
-          </Grid>
+businessname,
+cellnumber,
+
+zipcode
+} = state;
+
+
+
+
+
+return (
+<JWTRoot>
+  <Div>
+    <Card className="card" sx={{ padding: 4 }}>
+      <Grid container>
+
+
+        <Grid item sm={12} xs={12}>
+
+          <Typography level="h1" fontSize="xl" fontWeight="500" color="#F9AD19" sx={{ mb: 2 }}>CHANGE! - CLIENT SIGNUP</Typography>
+
+
+
+
+          <ValidatorForm onSubmit={handleSubmit} onError={()=> null}>
+            <Grid container spacing={8}>
+              <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+
+                <TextField type="number" disabled="false" name="clientid" id="standard-basic" value={clientid || "" } onChange={handleChange} errorMessages={["this field is required"]} label="Client Id (Min length 4, Max length 9)" validators={["required", "minStringLength: 4" , "maxStringLength: 9" ]} />
+
+                <TextField type="text" name="firstname" label="First Name" onChange={handleChange} value={firstname || "" } validators={["required"]} errorMessages={["this field is required"]} />
+
+                <TextField type="text" name="lastname" label="Last Name" onChange={handleChange} value={lastname || "" } validators={["required"]} errorMessages={["this field is required"]} />
+
+                <TextField type="text" name="businessname" label="Business Name" onChange={handleChange} value={businessname || "" } validators={["required"]} errorMessages={["this field is required"]} />
+
+                <Grid container spacing={3}>
+                  <Grid item sm={3} xs={12}>
+                    <TextField type="text" name="mobile" value={mobile || "" } label="Mobile Nubmer" onChange={handleChange} validators={["required"]} errorMessages={["this field is required"]} />
+                  </Grid>
+                  <Grid item sm={9} xs={12}>
+                    <TextField type="text" name="mobile" value={mobile || "" } label="Mobile Nubmer" onChange={handleChange} validators={["required"]} errorMessages={["this field is required"]} />
+                  </Grid>
+
+                </Grid>
+
+                <Grid container spacing={3}>
+                  <Grid item sm={3} xs={12}>
+                    <TextField type="text" name="cellnumber" value={cellnumber || "" } label="Cell Nubmer" onChange={handleChange} validators={["required"]} errorMessages={["this field is required"]} />
+                  </Grid>
+                  <Grid item sm={9} xs={12}>
+                    <TextField type="text" name="cellnumber" value={cellnumber || "" } label="Cell Nubmer" onChange={handleChange} validators={["required"]} errorMessages={["this field is required"]} />
+                  </Grid>
+
+                </Grid>
+
+
+
+                <TextField type="email" name="email1" label="Email " value={email1 || "" } onChange={handleChange} validators={["required", "isEmail" ]} errorMessages={["this field is required", "email is not valid" ]} />
+                <TextField name="password" type="password" label="Password" value={password || "" } onChange={handleChange} validators={["required"]} errorMessages={["this field is required"]} />
+
+              </Grid>
+
+              <Grid item lg={6} md={6} sm={12} xs={12} sx={{ mt: 2 }}>
+
+                <TextField id="outlined-select-terms" select label="Payments Terms" defaultValue="NY" helperText="Please select your Payments terms">
+                  {paymentTerms.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                  </MenuItem>
+                  ))}
+                </TextField>
+
+
+                <TextField id="outlined-select-terms" select label="Payments Mode" defaultValue="NY" helperText="Please select your Payments terms">
+                  {paymentmode.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                  </MenuItem>
+                  ))}
+                </TextField>
+
+                <TextField id="outlined-select-currency" select label="Currency" defaultValue="NY" helperText="Please select your Currency">
+                  {currency.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                  </MenuItem>
+                  ))}
+                </TextField>
+
+                <TextField id="outlined-select-State" select label="State" defaultValue="NY" helperText="Please select your State">
+                  {States.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                  </MenuItem>
+                  ))}
+                </TextField>
+
+                <TextField id="outlined-select-City" select label="City" defaultValue="NY" helperText="Please select your City">
+                  {Cities.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                  </MenuItem>
+                  ))}
+                </TextField>
+
+                <TextField id="outlined-select-Country" select label="Country" defaultValue="NY" helperText="Please select your Country">
+                  {countries.map((option) => (
+                  <MenuItem key={option.value} value={option.value}>
+                  {option.label}
+                  </MenuItem>
+                  ))}
+                </TextField>
+
+
+                <TextField type="text" name="zipcode" value={zipcode || "" } label="Zip code" onChange={handleChange} validators={["required"]} errorMessages={["this field is required"]} />
+              </Grid>
+
+
+
+            </Grid>
+
+            <Grid item sm={12} xs={12} textAlign="right">
+
+              <Button color="yellow" variant="contained" type="submit" sx={{  borderRadius: '30px', }}>
+                <Icon>send</Icon>
+                <Span sx={{ pl: 1, textTransform: "capitalize" }}>Sign UP</Span>
+              </Button>
+
+
+            </Grid>
+
+            <Grid item sm={12} xs={12} textAlign="right" sx={{ mt: 2 }}>
+              <NavLink to="/session/signin">
+                Already have an account?<Span sx={{  color:"#1976d2", }}>Login</Span>
+              </NavLink>
+            </Grid>
+
+          </ValidatorForm>
+
+
+
         </Grid>
-      </Card>
-    </JWTRegister>
-  );
+      </Grid>
+    </Card>
+  </Div>
+</JWTRoot>
+);
 };
 
 export default JwtRegister;

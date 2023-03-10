@@ -13,18 +13,17 @@ import { FlexBetween } from "app/components/FlexBox";
 import MatxMenu from "app/components/MatxMenu";
 import MatxSearchBox from "app/components/MatxSearchBox";
 import { themeShadows } from "app/components/MatxTheme/themeColors";
-import NotificationBar from "app/components/NotificationBar";
 import { Span } from "app/components/Typography";
 import useAuth from "app/hooks/useAuth";
 import useSettings from "app/hooks/useSettings";
 import { topBarHeight } from "app/utils/constant";
 import React from "react";
 import { useNavigate } from "react-router-dom";
-import ShoppingCart from "../../ShoppingCart";
+
 
 // styled components
 const StyledIconButton = styled(IconButton)(({ theme }) => ({
-  color: theme.palette.text.primary,
+  color: theme.palette.primary.main,
 }));
 
 const TopbarRoot = styled("div")({
@@ -40,7 +39,7 @@ const TopbarContainer = styled(FlexBetween)(({ theme }) => ({
   padding: "8px",
   paddingLeft: 18,
   paddingRight: 20,
-  background: theme.palette.primary.main,
+  background: "#F9AD19",
   [theme.breakpoints.down("sm")]: { paddingLeft: 16, paddingRight: 16 },
   [theme.breakpoints.down("xs")]: { paddingLeft: 14, paddingRight: 16 },
 }));
@@ -77,6 +76,8 @@ const IconBox = styled("div")(({ theme }) => ({
   [theme.breakpoints.down("md")]: { display: "none !important" },
 }));
 
+
+
 const Layout1Topbar = () => {
   const theme = useTheme();
   const navigate = useNavigate();
@@ -105,30 +106,19 @@ const Layout1Topbar = () => {
       <TopbarContainer>
         <Box display="flex">
           <StyledIconButton onClick={handleSidebarToggle}>
-            <Icon>menu</Icon>
+            <Icon>menu</Icon> &nbsp;
+            <Span display={{ sm: "inline", xs: "none", fontSize:"18px" }}>
+              Dashboard
+                </Span>
           </StyledIconButton>
 
-          <IconBox>
-            <StyledIconButton>
-              <Icon>mail_outline</Icon>
-            </StyledIconButton>
-
-            <StyledIconButton>
-              <Icon>web_asset</Icon>
-            </StyledIconButton>
-
-            <StyledIconButton>
-              <Icon>star_outline</Icon>
-            </StyledIconButton>
-          </IconBox>
+         
         </Box>
 
         <Box display="flex" alignItems="center">
           <MatxSearchBox />
 
-          <NotificationBar />
-
-          <ShoppingCart />
+         
 
           <MatxMenu
             menuButton={

@@ -32,7 +32,7 @@ const ForgotPassword = () => {
         <Grid container>
           <Grid item xs={12}>
             <FlexAlignCenter p={4}>
-              <img width="300" src="/assets/images/illustrations/dreamer.svg" alt="" />
+              <img width="300" src="/assets/images/illustrations/forgotpwd.svg" alt="" />
             </FlexAlignCenter>
 
             <ContentBox>
@@ -48,13 +48,13 @@ const ForgotPassword = () => {
                   sx={{ mb: 3, width: "100%" }}
                 />
 
-                <Button fullWidth variant="contained" color="primary" type="submit">
+                <Button fullWidth variant="contained" color="yellow" type="submit">
                   Reset Password
                 </Button>
 
                 <Button
                   fullWidth
-                  color="primary"
+                  color="yellow"
                   variant="outlined"
                   onClick={() => navigate(-1)}
                   sx={{ mt: 2 }}
