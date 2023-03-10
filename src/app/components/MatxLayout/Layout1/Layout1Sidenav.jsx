@@ -22,17 +22,7 @@ const SidebarNavRoot = styled(Box)(({ theme, width, bg, img }) => ({
   backgroundRepeat: "no-repeat",
   color: theme.palette.text.primary,
   transition: "all 250ms ease-in-out",
-  backgroundImage: `linear-gradient(to bottom, rgba(${bg}, 0.96), rgba(${bg}, 0.96)), url(${img})`,
-  "&:hover": {
-    width: sideNavWidth,
-    "& .sidenavHoverShow": { display: "block" },
-    "& .compactNavItem": {
-      width: "100%",
-      maxWidth: "100%",
-      "& .nav-bullet": { display: "block" },
-      "& .nav-bullet-text": { display: "none" },
-    },
-  },
+  background: "#565656"
 }));
 
 const NavListBox = styled(Box)({

@@ -154,6 +154,50 @@ export const themeColors = {
       background: { paper: "#fff", default: "#fafafa" },
       primary: { main: "#1976d2", contrastText: "#ffffff" },
       secondary: { main: "#FFAF38", contrastText: textLight.primary },
+
+      yellow: {
+        main: '#F9AD19',
+        contrastText: '#ffffff',
+      },
+
+    
+
+      
+      gray: {
+        main: '#4F4F4F',
+        contrastText: '#ffffff',
+      },
+
+      white: {
+        main: '#ffffff',
+        contrastText: '#34314C',
+        textLight: 'A4A4A4',
+      },
+
+      textyellow: {
+       
+        contrastText: '#F9AD19',
+      },
+
+      graychips: {
+        main: '#D9D9D9',
+        contrastText: '#ffffff',
+      },
+
+      yellowchips: {
+        main: '#FFE1A6',
+        contrastText: '#34314C',
+      },
+
+      greenchips: {
+        main: '#CAECC4',
+        contrastText: '#34314C',
+      },
+
+
+
+
+
     },
   },
 
