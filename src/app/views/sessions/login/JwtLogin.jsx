@@ -34,8 +34,9 @@ alignItems: 'center',
 
 // inital login credentials
 const initialValues = {
-email: 'jason@ui-lib.com',
-password: 'dummyPass',
+client_id: 17,
+email: 'tonydev@cuemindai.com',
+password: 'tonydev007',
 remember: true,
 };
 
@@ -71,7 +72,7 @@ setSignup(false);
 const handleFormSubmit = async (values) => {
 setLoading(true);
 try {
-await login(values.email, values.password);
+await login(values.client_id, values.email, values.password);
 navigate('/');
 } catch (e) {
 setLoading(false);
@@ -94,7 +95,7 @@ return (
           <Formik onSubmit={handleFormSubmit} initialValues={initialValues} validationSchema={validationSchema}>
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit }) => (
             <form onSubmit={handleSubmit}>
-              <TextField fullWidth size="small" type="number" name="clientid" label="Client ID" variant="outlined" onBlur={handleBlur} value={values.email} onChange={handleChange} helperText={touched.email && errors.email} error={Boolean(errors.email && touched.email)} sx={{ mb: 3 }} />
+              <TextField fullWidth size="small" type="number" name="client_id" label="Client ID" variant="outlined" onBlur={handleBlur} value={values.client_id} onChange={handleChange} helperText={touched.client_id && errors.client_id} error={Boolean(errors.client_id && touched.client_id)} sx={{ mb: 3 }} />
 
 
               <TextField fullWidth size="small" type="email" name="email" label="Email" variant="outlined" onBlur={handleBlur} value={values.email} onChange={handleChange} helperText={touched.email && errors.email} error={Boolean(errors.email && touched.email)} sx={{ mb: 3 }} />

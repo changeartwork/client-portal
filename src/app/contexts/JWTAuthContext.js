@@ -1,5 +1,6 @@
 import { MatxLoading } from "app/components";
-import axios from "axios";
+import axiosMock from "axios";
+import axios from "../../axios"
 import jwtDecode from "jwt-decode";
 import { createContext, useEffect, useReducer } from "react";
 
@@ -21,9 +22,11 @@ const setSession = (accessToken) => {
   if (accessToken) {
     localStorage.setItem("accessToken", accessToken);
     axios.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
+    axiosMock.defaults.headers.common.Authorization = `Bearer ${accessToken}`;
   } else {
     localStorage.removeItem("accessToken");
     delete axios.defaults.headers.common.Authorization;
+    delete axiosMock.defaults.headers.common.Authorization;
   }
 };
 
@@ -61,19 +64,28 @@ const AuthContext = createContext({
 export const AuthProvider = ({ children }) => {
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const login = async (email, password) => {
-    const { data } = await axios.post("/api/auth/login", {
+  const login = async (client_id, email, password) => {
+    const response = await axios.post(`${process.env.REACT_APP_US_URL}/login-client`, {
+      client_id,
       email,
       password,
+      role: 'client'
     });
 
-    const { accessToken, user } = data;
+    const { accessToken, client } = response.data;
+    var user = {
+      id: client.profile._id,
+      email: client.profile.email,
+      name: client.profile.first_name+" "+client.profile.last_name,
+      avatar: client.profile.avatar,
+      role: "client"
+  }
     setSession(accessToken);
-    dispatch({ type: "LOGIN", payload: { user } });
+    dispatch({ type: "LOGIN",  payload: { isAuthenticated: true, user } });
   };
 
   const register = async (email, username, password) => {
-    const { data } = await axios.post("/api/auth/register", {
+    const { data } = await axiosMock.post("/api/auth/register", {
       email,
       username,
       password,
@@ -98,9 +110,14 @@ export const AuthProvider = ({ children }) => {
 
         if (accessToken && isValidToken(accessToken)) {
           setSession(accessToken);
-          const response = await axios.get("/api/auth/profile");
-          const { user } = response.data;
-
+          const response = await axios.get(`${process.env.REACT_APP_US_URL}/profile`, {headers:{'Authorization': accessToken}});
+          var user = {
+            id: response.data._id,
+            email: response.data.email,
+            name: response.data.first_name+" "+response.data.last_name,
+            avatar: response.data.avatar,
+            role: "client"
+        }
           dispatch({
             type: "INIT",
             payload: { isAuthenticated: true, user },
