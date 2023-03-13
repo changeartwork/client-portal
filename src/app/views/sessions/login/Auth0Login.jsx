@@ -38,7 +38,7 @@ const Auth0Login = () => {
         <Grid container>
           <Grid item sm={12} xs={12}>
             <JustifyBox p={4} bgcolor="background.default">
-              <img src="/assets/images/illustrations/dreamer.svg" width="400" alt="Login" />
+              <img src="/cpdev/assets/images/illustrations/dreamer.svg" width="400" alt="Login" />
             </JustifyBox>
 
             <JustifyBox p={4}>
@@ -47,7 +47,7 @@ const Auth0Login = () => {
                 variant="contained"
                 onClick={handleLogin}
                 className="socialButton"
-                endIcon={<img src="/assets/images/logos/auth0.svg" alt="AuthO" />}
+                endIcon={<img src="/cpdev/assets/images/logos/auth0.svg" alt="AuthO" />}
               >
                 Sign In With
               </Button>

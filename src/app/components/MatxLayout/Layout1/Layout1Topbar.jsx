@@ -131,17 +131,17 @@ const Layout1Topbar = () => {
               </UserMenu>
             }
           >
-            <StyledItem onClick={() => navigate("/")}>
+            <StyledItem onClick={() => navigate("/cpdev")}>
               <Home fontSize="small" />
               <Span> Home </Span>
             </StyledItem>
 
-            <StyledItem onClick={() => navigate("/page-layouts/user-profile")}>
+            <StyledItem onClick={() => navigate("/cpdev/page-layouts/user-profile")}>
               <Person fontSize="small" />
               <Span> Profile </Span>
             </StyledItem>
 
-            <StyledItem onClick={() => navigate("/page-layouts/account")}>
+            <StyledItem onClick={() => navigate("/cpdev/page-layouts/account")}>
               <Settings fontSize="small" />
               <Span> Settings </Span>
             </StyledItem>

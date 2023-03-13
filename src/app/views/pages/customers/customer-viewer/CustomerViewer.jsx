@@ -23,7 +23,7 @@ const CustomerViewer = () => {
     <Container>
       <div className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Pages", path: "/pages" }, { name: "View Customer" }]}
+          routeSegments={[{ name: "Pages", path: "/cpdev/pages" }, { name: "View Customer" }]}
         />
       </div>
       <Tabs

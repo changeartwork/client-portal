@@ -99,7 +99,7 @@ const AppRechart = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Charts", path: "/charts" }, { name: "Recharts" }]} />
+        <Breadcrumb routeSegments={[{ name: "Charts", path: "/cpdev/charts" }, { name: "Recharts" }]} />
       </Box>
 
       <Stack spacing={2}>

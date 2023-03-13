@@ -8,8 +8,8 @@ const InventoryManagement = Loadable(lazy(() => import("./InventoryManagement"))
 
 const dashboardRoutes = [
  
-  { path: "dashboard/default", element: <Analytics /> },
-  { path: "dashboard/inventory-management", element: <InventoryManagement /> },
+  { path: "/cpdev/dashboard/default", element: <Analytics /> },
+  { path: "/cpdev/dashboard/inventory-management", element: <InventoryManagement /> },
 ];
 
 export default dashboardRoutes;

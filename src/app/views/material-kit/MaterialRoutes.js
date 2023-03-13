@@ -17,20 +17,20 @@ const AppAutoComplete = Loadable(lazy(() => import("./auto-complete/AppAutoCompl
 const AppExpansionPanel = Loadable(lazy(() => import("./expansion-panel/AppExpansionPanel")));
 
 const materialRoutes = [
-  { path: "/material/table", element: <AppTable /> },
-  { path: "/material/form", element: <AppForm /> },
-  { path: "/material/buttons", element: <AppButton /> },
-  { path: "/material/icons", element: <AppIcon /> },
-  { path: "/material/progress", element: <AppProgress /> },
-  { path: "/material/menu", element: <AppMenu /> },
-  { path: "/material/checkbox", element: <AppCheckbox /> },
-  { path: "/material/switch", element: <AppSwitch /> },
-  { path: "/material/radio", element: <AppRadio /> },
-  { path: "/material/slider", element: <AppSlider /> },
-  { path: "/material/autocomplete", element: <AppAutoComplete /> },
-  { path: "/material/expansion-panel", element: <AppExpansionPanel /> },
-  { path: "/material/dialog", element: <AppDialog /> },
-  { path: "/material/snackbar", element: <AppSnackbar /> },
+  { path: "/cpdev/material/table", element: <AppTable /> },
+  { path: "/cpdev/material/form", element: <AppForm /> },
+  { path: "/cpdev/material/buttons", element: <AppButton /> },
+  { path: "/cpdev/material/icons", element: <AppIcon /> },
+  { path: "/cpdev/material/progress", element: <AppProgress /> },
+  { path: "/cpdev/material/menu", element: <AppMenu /> },
+  { path: "/cpdev/material/checkbox", element: <AppCheckbox /> },
+  { path: "/cpdev/material/switch", element: <AppSwitch /> },
+  { path: "/cpdev/material/radio", element: <AppRadio /> },
+  { path: "/cpdev/material/slider", element: <AppSlider /> },
+  { path: "/cpdev/material/autocomplete", element: <AppAutoComplete /> },
+  { path: "/cpdev/material/expansion-panel", element: <AppExpansionPanel /> },
+  { path: "/cpdev/material/dialog", element: <AppDialog /> },
+  { path: "/cpdev/material/snackbar", element: <AppSnackbar /> },
 ];
 
 export default materialRoutes;

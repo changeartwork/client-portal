@@ -27,7 +27,7 @@ const ApexCharts = () => {
     <Container>
       <div className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Charts", path: "/charts" }, { name: "Apex Charts" }]}
+          routeSegments={[{ name: "Charts", path: "/cpdev/charts" }, { name: "Apex Charts" }]}
         />
       </div>
 

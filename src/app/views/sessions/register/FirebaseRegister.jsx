@@ -80,7 +80,7 @@ const FirebaseRegister = () => {
         <Grid container>
           <Grid item lg={5} md={5} sm={5} xs={12}>
             <ContentBox>
-              <IMG src="/assets/images/illustrations/posting_photo.svg" alt="" />
+              <img src="/cpdev/assets/images/illustrations/posting_photo.svg" alt="" />
             </ContentBox>
           </Grid>
 
@@ -90,7 +90,7 @@ const FirebaseRegister = () => {
                 fullWidth
                 variant="contained"
                 onClick={handleGoogleRegister}
-                startIcon={<img src="/assets/images/logos/google.svg" alt="google" />}
+                startIcon={<img src="/cpdev/assets/images/logos/google.svg" alt="google" />}
               >
                 Sign In With Google
               </GoogleButton>

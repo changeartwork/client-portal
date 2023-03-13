@@ -6,9 +6,9 @@ const Cart = Loadable(lazy(() => import("./Cart")));
 const Checkout = Loadable(lazy(() => import("./Checkout")));
 
 const ecommerceRoutes = [
-  { path: "/ecommerce/shop", element: <Shop /> },
-  { path: "/ecommerce/cart", element: <Cart /> },
-  { path: "/ecommerce/checkout", element: <Checkout /> },
+  { path: "/cpdev/ecommerce/shop", element: <Shop /> },
+  { path: "/cpdev/ecommerce/cart", element: <Cart /> },
+  { path: "/cpdev/ecommerce/checkout", element: <Checkout /> },
 ];
 
 export default ecommerceRoutes;

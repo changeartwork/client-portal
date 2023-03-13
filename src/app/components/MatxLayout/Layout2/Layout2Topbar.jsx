@@ -89,7 +89,7 @@ const Layout2Topbar = () => {
               </StyledItem>
 
               <StyledItem>
-                <Link to="/page-layouts/user-profile">
+                <Link to="/cpdev/page-layouts/user-profile">
                   <Icon> person </Icon>
                   <Span sx={{ pl: 2 }}> Profile </Span>
                 </Link>

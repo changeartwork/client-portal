@@ -949,7 +949,7 @@ const AppIcon = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Icons" }]} />
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Icons" }]} />
       </Box>
 
       <SimpleCard title="icons">

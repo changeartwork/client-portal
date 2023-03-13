@@ -33,7 +33,7 @@ const AppProgress = () => {
     <ProgressRoot>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Material", path: "/material" }, { name: "Prgress" }]}
+          routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Prgress" }]}
         />
       </Box>
 

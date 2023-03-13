@@ -325,7 +325,7 @@ return (
             </Grid>
 
             <Grid item sm={12} xs={12} textAlign="right" sx={{ mt: 2 }}>
-              <NavLink to="/session/signin">
+              <NavLink to="/cpdev/session/signin">
                 Already have an account?<Span sx={{  color:"#1976d2", }}>Login</Span>
               </NavLink>
             </Grid>

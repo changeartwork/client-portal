@@ -19,7 +19,7 @@ const AppExpansionPanel = () => {
     <Container>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Material", path: "/material" }, { name: "Expansion Panel" }]}
+          routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Expansion Panel" }]}
         />
       </Box>
 

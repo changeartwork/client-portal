@@ -1,6 +1,7 @@
 {
-  "name": "matx-react-pro",
-  "version": "3.6.0",
+  "name": "client-portal-development",
+  "version": "1.0.0",
+  "homepage": "cpdev",
   "private": true,
   "dependencies": {
     "@auth0/auth0-spa-js": "^2.0.1",

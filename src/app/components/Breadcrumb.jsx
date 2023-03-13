@@ -53,7 +53,7 @@ const Breadcrumb = ({ routeSegments }) => {
           position: "relative",
         }}
       >
-        <NavLink to="/">
+        <NavLink to="/cpdev/">
           <StyledIcon color="primary">home</StyledIcon>
         </NavLink>
         {routeSegments

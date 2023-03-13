@@ -49,12 +49,12 @@ const routes = [
       ...pricingRoutes,
       ...scrumBoardRoutes,
       ...todoRoutes,
-      { path: "/page-layouts/account", element: <Account /> },
+      { path: "/cpdev/page-layouts/account", element: <Account /> },
     ],
   },
   ...sessionRoutes,
-  { path: "/", element: <Redirect /> },
-  { path: "*", element: <NotFound /> },
+  { path: "/cpdev", element: <Redirect /> },
+  { path: "/cpdev/*", element: <NotFound /> },
 ];
 
 export default routes;

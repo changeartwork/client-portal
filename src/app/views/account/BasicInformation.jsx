@@ -109,7 +109,7 @@ const BasicInformation = () => {
               }
             >
               <ImageWrapper>
-                <img src="/assets/images/avatars/001-man.svg" alt="Team Member" sizes="large" />
+                <img src="/cpdev/assets/images/avatars/001-man.svg" alt="Team Member" sizes="large" />
               </ImageWrapper>
             </AvatarBadge>
           </FlexBox>

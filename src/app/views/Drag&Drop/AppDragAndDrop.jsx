@@ -19,7 +19,7 @@ const AppDragAndDrop = () => {
     <Container>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "others", path: "/drag-and-drop" }, { name: "Drag and Drop" }]}
+          routeSegments={[{ name: "others", path: "/cpdev/drag-and-drop" }, { name: "Drag and Drop" }]}
         />
       </Box>
 

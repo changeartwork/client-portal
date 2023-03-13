@@ -19,7 +19,7 @@ const AppCheckbox = () => {
     <Container>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Material", path: "/material" }, { name: "Chckbox" }]}
+          routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Chckbox" }]}
         />
       </Box>
 

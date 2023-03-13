@@ -18,7 +18,7 @@ const AppMenu = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Menu" }]} />
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Menu" }]} />
       </Box>
 
       <Stack spacing={3}>

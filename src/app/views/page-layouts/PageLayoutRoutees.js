@@ -6,11 +6,11 @@ const UserProfile = Loadable(lazy(() => import("./user-profile/UserProfile")));
 
 const pageLayoutRoutes = [
   {
-    path: "/page-layouts/Left-sidebar-card",
+    path: "/cpdev/page-layouts/Left-sidebar-card",
     element: <LeftSidebarCard />,
   },
   {
-    path: "/page-layouts/user-profile",
+    path: "/cpdev/page-layouts/user-profile",
     element: <UserProfile />,
   },
 ];

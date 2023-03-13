@@ -18,7 +18,7 @@ const PaymentDialog = ({ open, toggleDialog }) => {
   return (
     <Dialog open={open} onClose={toggleDialog} scroll="body">
       <DialogContent>
-        <IMG src="/assets/images/debit-card.png" alt="debit-card" />
+        <img src="/cpdev/assets/images/debit-card.png" alt="debit-card" />
 
         <Formik initialValues={initialValues} onSubmit={handleSubmit}>
           {({ values, errors, touched, handleChange, handleSubmit, handleBlur }) => {

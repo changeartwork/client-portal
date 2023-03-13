@@ -78,7 +78,7 @@ const Pricing4 = () => {
                       <Button variant="contained" color="primary">
                         Get Started
                       </Button>
-                      <Link to="/">Learn More</Link>
+                      <Link to="/cpdev/">Learn More</Link>
                     </Box>
                   </td>
                 ))}

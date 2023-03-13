@@ -23,7 +23,7 @@ const AppSnackbar = () => {
     <Container>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Material", path: "/material" }, { name: "Snackbar" }]}
+          routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Snackbar" }]}
         />
       </Box>
 

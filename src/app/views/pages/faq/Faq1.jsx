@@ -76,7 +76,7 @@ const Faq1 = () => {
   return (
     <Container>
       <div className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Pages", path: "/faq" }, { name: "FAQ 1" }]} />
+        <Breadcrumb routeSegments={[{ name: "Pages", path: "/cpdev/faq" }, { name: "FAQ 1" }]} />
       </div>
 
       <FlexAlignCenter py={8} flexDirection="column">

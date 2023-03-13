@@ -17,7 +17,7 @@ const AppRadio = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Radio" }]} />
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Radio" }]} />
       </Box>
 
       <Stack spacing={3}>

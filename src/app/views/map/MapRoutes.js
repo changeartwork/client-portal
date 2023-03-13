@@ -5,7 +5,7 @@ const AppMap = Loadable(lazy(() => import("./AppMap")));
 
 const mapRoutes = [
   {
-    path: "/map",
+    path: "/cpdev/map",
     element: <AppMap />,
   },
 ];

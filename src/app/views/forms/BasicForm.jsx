@@ -16,7 +16,7 @@ const BasicForm = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Forms", path: "/forms" }, { name: "Basic" }]} />
+        <Breadcrumb routeSegments={[{ name: "Forms", path: "/cpdev/forms" }, { name: "Basic" }]} />
       </Box>
 
       <Card sx={{ px: 3, pt: 1, pb: 2 }}>

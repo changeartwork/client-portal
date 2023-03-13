@@ -189,7 +189,7 @@ class TodoEditor extends Component {
       <Container>
         <JustifyBox>
           <FlexBox>
-            <Link to="/todo/list">
+            <Link to="/cpdev/todo/list">
               <IconButton>
                 <Icon>arrow_back</Icon>
               </IconButton>
@@ -341,7 +341,7 @@ class TodoEditor extends Component {
               </Grid>
             </Box>
 
-            <Link to="/todo/list">
+            <Link to="/cpdev/todo/list">
               <Button variant="outlined" color="secondary" sx={{ mr: 2 }} type="submit">
                 cancel
               </Button>

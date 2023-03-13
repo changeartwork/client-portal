@@ -11,19 +11,19 @@ const JwtRegister = Loadable(lazy(() => import("./register/JwtRegister")));
 
 const sessionRoutes = [
   {
-    path: '/session/signup',
+    path: '/cpdev/session/signup',
     element: <JwtRegister />,
   },
   {
-    path: '/session/signin',
+    path: '/cpdev/session/signin',
     element: <JwtLogin />,
   },
   {
-    path: '/session/forgot-password',
+    path: '/cpdev/session/forgot-password',
     element: <ForgotPassword />,
   },
   {
-    path: '/session/404',
+    path: '/cpdev/session/404',
     element: <NotFound />,
   },
 ];

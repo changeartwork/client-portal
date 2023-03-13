@@ -18,7 +18,7 @@ const AppAutoComplete = () => {
     <Container>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Material", path: "/material" }, { name: "Autocomplete" }]}
+          routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Autocomplete" }]}
         />
       </Box>
 

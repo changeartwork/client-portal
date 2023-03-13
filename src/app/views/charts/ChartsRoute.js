@@ -6,9 +6,9 @@ const AppRechart = Loadable(lazy(() => import("./recharts/AppRechart")));
 const ApexCharts = Loadable(lazy(() => import("./apex-charts/ApexCharts")));
 
 const chartsRoute = [
-  { path: "/charts/echarts", element: <AppEchart /> },
-  { path: "/charts/recharts", element: <AppRechart /> },
-  { path: "/charts/apex-charts", element: <ApexCharts /> },
+  { path: "/cpdev/charts/echarts", element: <AppEchart /> },
+  { path: "/cpdev/charts/recharts", element: <AppRechart /> },
+  { path: "/cpdev/charts/apex-charts", element: <ApexCharts /> },
 ];
 
 export default chartsRoute;

@@ -19,7 +19,7 @@ const AppSlider = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Material", path: "/material" }, { name: "Slider" }]} />
+        <Breadcrumb routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Slider" }]} />
       </Box>
 
       <Stack spacing={3}>

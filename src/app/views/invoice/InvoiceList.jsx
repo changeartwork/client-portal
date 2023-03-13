@@ -79,7 +79,7 @@ const InvoiceList = () => {
 
   return (
     <Container>
-      <Link to="/invoice/add">
+      <Link to="/cpdev/invoice/add">
         <Button sx={{ mb: 2 }} variant="contained" color="primary">
           Add Invoice
         </Button>

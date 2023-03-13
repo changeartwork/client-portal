@@ -6,9 +6,9 @@ const InvoiceDetails = Loadable(lazy(() => import("./InvoiceDetails")));
 const InvoiceList2 = Loadable(lazy(() => import("./InvoiceList")));
 
 const invoiceRoutes = [
-  { path: "/invoice/list", element: <InvoiceList /> },
-  { path: "/invoice/:id", element: <InvoiceDetails /> },
-  { path: "/invoice/edit/:id", element: <InvoiceList2 /> },
+  { path: "/cpdev/invoice/list", element: <InvoiceList /> },
+  { path: "/cpdev/invoice/:id", element: <InvoiceDetails /> },
+  { path: "/cpdev/invoice/edit/:id", element: <InvoiceList2 /> },
 ];
 
 export default invoiceRoutes;

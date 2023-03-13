@@ -64,7 +64,7 @@ const [signup, setSignup] = useState(false);
 const handleSignup=()=>{
 setSignup(true);
 try{
-navigate("/session/signup")
+navigate("/cpdev/session/signup")
 }catch(e){
 setSignup(false);
 }
@@ -73,7 +73,7 @@ const handleFormSubmit = async (values) => {
 setLoading(true);
 try {
 await login(values.client_id, values.email, values.password);
-navigate('/');
+navigate('/cpdev');
 } catch (e) {
 setLoading(false);
 }
@@ -85,7 +85,7 @@ return (
     <Grid container>
       <Grid item sm={6} xs={12}>
         <JustifyBox p={4} height="100%" sx={{ minWidth: 320 }}>
-          <img src="/assets/images/illustrations/loginbg.svg" width="100%" alt="" />
+          <img src="/cpdev/assets/images/illustrations/loginbg.svg" width="100%" alt="" />
         </JustifyBox>
       </Grid>
 
@@ -109,7 +109,7 @@ return (
                   <Paragraph>Remember Me</Paragraph>
                 </FlexBox>
 
-                <NavLink to="/session/forgot-password" style={{ color: theme.palette.primary.main }}>
+                <NavLink to="/cpdev/session/forgot-password" style={{ color: theme.palette.primary.main }}>
                   Forgot password?
                 </NavLink>
               </FlexBox>

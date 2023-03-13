@@ -72,7 +72,7 @@ const CustomerList = () => {
     <Container>
       <div className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Pages", path: "/pages" }, { name: "Customer List" }]}
+          routeSegments={[{ name: "Pages", path: "/cpdev/pages" }, { name: "Customer List" }]}
         />
       </div>
 

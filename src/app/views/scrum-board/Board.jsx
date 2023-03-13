@@ -79,7 +79,7 @@ const Board = () => {
     <Container className="scrum-board">
       <FlexBetween flexWrap="wrap" mb={2}>
         <FlexBox gap={1}>
-          <Link to="/scrum-board">
+          <Link to="/cpdev/scrum-board">
             <IconButton>
               <Icon>arrow_back</Icon>
             </IconButton>

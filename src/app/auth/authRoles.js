@@ -10,7 +10,7 @@ export const authRoles = {
 
 // const dashboardRoutes = [
 //   {
-//     path: "/dashboard/analytics",
+//     path: "/cpdev/dashboard/analytics",
 //     component: Analytics,
 //     auth: authRoles.admin <===============
 //   }
@@ -20,7 +20,7 @@ export const authRoles = {
 
 // {
 //   name: "Dashboard",
-//   path: "/dashboard/analytics",
+//   path: "/cpdev/dashboard/analytics",
 //   icon: "dashboard",
 //   auth: authRoles.admin <=================
 // }

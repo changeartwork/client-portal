@@ -77,7 +77,7 @@ const InvoiceViewer = ({ toggleInvoiceEditor }) => {
   return (
     <Box py={2} className="invoice-viewer">
       <ButtonBox className="viewer_actions">
-        <Link to="/invoice/list">
+        <Link to="/cpdev/invoice/list">
           <IconButton>
             <Icon>arrow_back</Icon>
           </IconButton>

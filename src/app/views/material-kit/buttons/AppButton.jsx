@@ -21,7 +21,7 @@ export default function AppButton() {
     <AppButtonRoot>
       <Box className="breadcrumb">
         <Breadcrumb
-          routeSegments={[{ name: "Material", path: "/material" }, { name: "Buttons" }]}
+          routeSegments={[{ name: "Material", path: "/cpdev/material" }, { name: "Buttons" }]}
         />
       </Box>
 

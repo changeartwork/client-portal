@@ -127,7 +127,7 @@ const FirebaseLogin = () => {
               <Span sx={{ flexGrow: 1 }}></Span>
 
               <a href="https://ui-lib.com/" target="_blank" rel="noopener noreferrer">
-                <img src="/assets/images/logos/ui-lib.png" alt="UI Lib Logo" />
+                <img src="/cpdev/assets/images/logos/ui-lib.png" alt="UI Lib Logo" />
               </a>
             </div>
           </Grid>
@@ -138,7 +138,7 @@ const FirebaseLogin = () => {
                 fullWidth
                 variant="contained"
                 onClick={handleGoogleLogin}
-                startIcon={<img src="/assets/images/logos/google.svg" alt="google" />}
+                startIcon={<img src="/cpdev/assets/images/logos/google.svg" alt="google" />}
               >
                 Sign In With Google
               </GoogleButton>

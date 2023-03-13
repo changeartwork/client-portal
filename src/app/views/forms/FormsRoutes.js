@@ -10,13 +10,13 @@ const PropertyListingForm = Loadable(lazy(() => import("./PropertyListingForm"))
 const CustomerForm = Loadable(lazy(() => import("../pages/customers/customer-form/CustomerForm")));
 
 const formsRoutes = [
-  { path: "/forms/basic", element: <BasicForm /> },
-  { path: "/forms/upload", element: <UploadForm /> },
-  { path: "/forms/wizard", element: <WizardForm /> },
-  { path: "/forms/order-form", element: <OrderForm /> },
-  { path: "/forms/property-listing-form", element: <PropertyListingForm /> },
-  { path: "/forms/customer-form", element: <CustomerForm /> },
-  { path: "/forms/invoice-form", element: <InvoiceForm /> },
+  { path: "/cpdev/forms/basic", element: <BasicForm /> },
+  { path: "/cpdev/forms/upload", element: <UploadForm /> },
+  { path: "/cpdev/forms/wizard", element: <WizardForm /> },
+  { path: "/cpdev/forms/order-form", element: <OrderForm /> },
+  { path: "/cpdev/forms/property-listing-form", element: <PropertyListingForm /> },
+  { path: "/cpdev/forms/customer-form", element: <CustomerForm /> },
+  { path: "/cpdev/forms/invoice-form", element: <InvoiceForm /> },
 ];
 
 export default formsRoutes;

@@ -137,7 +137,7 @@ const UploadForm = () => {
   return (
     <Container>
       <Box className="breadcrumb">
-        <Breadcrumb routeSegments={[{ name: "Others", path: "/" }, { name: "Upload" }]} />
+        <Breadcrumb routeSegments={[{ name: "Others", path: "/cpdev/" }, { name: "Upload" }]} />
       </Box>
 
       <SimpleCard title="File Upload">
